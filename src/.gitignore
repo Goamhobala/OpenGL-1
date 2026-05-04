@@ -15,3 +15,6 @@ data/
 data/*
 
 *.pdf
+build/
+opengl1
+cmake-build/

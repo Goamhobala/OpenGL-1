@@ -13,6 +13,7 @@ find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW)
 
+
 # 1. Grab files from BOTH the src folder AND their provided build folder
 file(GLOB SOURCES "src/*.cpp")
 file(GLOB PRAC_SOURCES "build/*.cpp") 
@@ -25,6 +26,16 @@ target_include_directories(Assignment1 PRIVATE src build)
 
 # Link SDL2 and OpenGL
 target_link_libraries(Assignment1 PRIVATE SDL2::SDL2 OpenGL::GL)
+
+include(FetchContent)
+FetchContent_Declare(
+  glm
+  GIT_REPOSITORY https://github.com/g-truc/glm.git
+  GIT_TAG 1.0.1  # Or desired version
+)
+FetchContent_MakeAvailable(glm)
+target_link_libraries(Assignment1 PRIVATE glm::glm)
+
 
 if(GLEW_FOUND)
     target_include_directories(Assignment1 PRIVATE ${GLEW_INCLUDE_DIRS})
