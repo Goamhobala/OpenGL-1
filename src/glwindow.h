@@ -4,6 +4,14 @@
 #include <GL/glew.h>
 
 #include "geometry.h"
+#include <vector>
+
+struct ObjectData
+{
+    GLuint vertexBuffer; // this stores the vertex data
+    GLuint vao; // this stores the vertex attributes pointer
+    int vertexCount;
+};
 
 class OpenGLWindow
 {
@@ -18,9 +26,10 @@ public:
 private:
     SDL_Window* sdlWin;
 
-    GLuint vao;
+    // GLuint vao;
     GLuint shader;
-    GLuint vertexBuffer;
+    // GLuint vertexBuffer;
+    std::vector<ObjectData> objects;
 };
 
 #endif

@@ -22,7 +22,7 @@ file(GLOB PRAC_SOURCES "build/*.cpp")
 add_executable(Assignment1 ${SOURCES} ${PRAC_SOURCES})
 
 # 2. Tell CMake to look for header files (.h) in both folders
-target_include_directories(Assignment1 PRIVATE src build)
+target_include_directories(Assignment1 PRIVATE src include build)
 
 # Link SDL2 and OpenGL
 target_link_libraries(Assignment1 PRIVATE SDL2::SDL2 OpenGL::GL)

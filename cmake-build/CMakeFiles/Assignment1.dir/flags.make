@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Volumes/MAC_KIOXIA/OpenGL1/src -I/Volumes/MAC_KIOXIA/OpenGL1/build -isystem /opt/homebrew/include -isystem /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2 -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
+CXX_INCLUDES = -I/Volumes/MAC_KIOXIA/OpenGL1/src -I/Volumes/MAC_KIOXIA/OpenGL1/include -I/Volumes/MAC_KIOXIA/OpenGL1/build -I/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src -isystem /opt/homebrew/include -isystem /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2 -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -F/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks 
 

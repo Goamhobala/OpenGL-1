@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Assignment1.dir/src/glwindow.cpp.o.d"
   "CMakeFiles/Assignment1.dir/src/main.cpp.o"
   "CMakeFiles/Assignment1.dir/src/main.cpp.o.d"
+  "CMakeFiles/Assignment1.dir/src/stb_image.cpp.o"
+  "CMakeFiles/Assignment1.dir/src/stb_image.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Volumes/MAC_KIOXIA/OpenGL1/build/_deps/glm-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

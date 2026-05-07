@@ -139,7 +139,8 @@ void OpenGLWindow::initGL()
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     glClearColor(0,0,0,1);
-
+    
+    GLuint vao = 0;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
@@ -150,29 +151,40 @@ void OpenGLWindow::initGL()
     glUseProgram(shader);
 
     int colorLoc = glGetUniformLocation(shader, "objectColor");
-    glUniform3f(colorLoc, 1.0f, 1.0f, 1.0f);
+    glUniform3f(colorLoc, 0.5f, 1.0f, 1.0f);
 
     // Load the model that we want to use and buffer the vertex attributes
-    //GeometryData geometry = loadOBJFile("tri.obj");
+    GeometryData geometry;
+    geometry.loadFromOBJFile("../res/sphere-fixed.txt");
 
     int vertexLoc = glGetAttribLocation(shader, "position");
-    float vertices[9] = { 0.0f,  0.5f, 0.0f,
-                         -0.5f, -0.5f, 0.0f,
-                          0.5f, -0.5f, 0.0f };
+    // float vertices[9] = { 0.0f,  0.5f, 0.0f,
+    //                      -0.5f, -0.5f, 0.0f,
+    //                       0.5f, -0.5f, 0.0f };
+
+    GLuint vertexBuffer = 0;
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, 9*sizeof(float), vertices, GL_STATIC_DRAW);
+    // we update the currently bound buffer with the vertex data from the sephere obj file
+    glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
     glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(vertexLoc);
+
+    ObjectData sun;
+    sun.vao = vao;
+    sun.vertexCount = geometry.vertexCount();
+    objects.push_back(sun);
 
     glPrintError("Setup complete", true);
 }
 
 void OpenGLWindow::render()
-{
+{   
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    for (const ObjectData& obj : objects) {
+        glBindVertexArray(obj.vao);
+        glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
+    }
 
     // Swap the front and back buffers on the window, effectively putting what we just "drew"
     // onto the screen (whereas previously it only existed in memory)
@@ -196,8 +208,10 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
 }
 
 void OpenGLWindow::cleanup()
-{
-    glDeleteBuffers(1, &vertexBuffer);
-    glDeleteVertexArrays(1, &vao);
+{   
+    for (ObjectData& obj : objects) {
+        glDeleteBuffers(1, &obj.vertexBuffer);
+        glDeleteVertexArrays(1, &obj.vao);
+    }
     SDL_DestroyWindow(sdlWin);
 }
