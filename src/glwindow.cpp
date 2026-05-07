@@ -6,6 +6,7 @@
 
 #include "glwindow.h"
 #include "geometry.h"
+#include "stb_image.h"
 
 using namespace std;
 
@@ -162,17 +163,50 @@ void OpenGLWindow::initGL()
     //                      -0.5f, -0.5f, 0.0f,
     //                       0.5f, -0.5f, 0.0f };
 
+    // Binding texture
+
+    GLuint texture = 0;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load("../res/sun_diffuse0.jpg", &width, &height, &nrChannels, 0);
+
+    if (data){
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    } 
+    
+    stbi_image_free(data);
     GLuint vertexBuffer = 0;
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    // we update the currently bound buffer with the vertex data from the sephere obj file
     glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
     glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(vertexLoc);
 
+    // create a separate buffer for texture
+    int texLoc = glGetAttribLocation(shader, "texture");
+    GLuint texCoordBuffer = 0;
+    glGenBuffers(1, &texCoordBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
+    glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
+    glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
+    glEnableVertexAttribArray(texLoc);
+
     ObjectData sun;
     sun.vao = vao;
     sun.vertexCount = geometry.vertexCount();
+    sun.textureID = texture;
+    // we need these for cleanup
+    sun.textureBuffer = texCoordBuffer;
+    sun.vertexBuffer = vertexBuffer;
     objects.push_back(sun);
 
     glPrintError("Setup complete", true);
@@ -182,6 +216,7 @@ void OpenGLWindow::render()
 {   
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     for (const ObjectData& obj : objects) {
+        glBindTexture(GL_TEXTURE_2D, obj.textureID);
         glBindVertexArray(obj.vao);
         glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
     }
@@ -209,9 +244,12 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
 
 void OpenGLWindow::cleanup()
 {   
-    for (ObjectData& obj : objects) {
-        glDeleteBuffers(1, &obj.vertexBuffer);
+    for (ObjectData& obj : objects) {  
+        glDeleteTextures(1, &obj.textureID);
         glDeleteVertexArrays(1, &obj.vao);
+        
+        glDeleteBuffers(1, &obj.textureBuffer);
+        glDeleteBuffers(1, &obj.vertexBuffer);
     }
     SDL_DestroyWindow(sdlWin);
 }

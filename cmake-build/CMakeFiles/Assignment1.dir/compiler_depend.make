@@ -1629,6 +1629,7 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/g
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
+  /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/glwindow.h \
   /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL.h \
@@ -2757,8 +2758,6 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
   /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h
 
 
-/Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h:
@@ -2830,6 +2829,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL.h:
 
 /Volumes/MAC_KIOXIA/OpenGL1/src/glwindow.h:
+
+/Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/inttypes.h:
 

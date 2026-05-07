@@ -863,4 +863,5 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/os/availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/glwindow.h \
-  /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h
+  /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h \
+  /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h

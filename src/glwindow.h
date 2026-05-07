@@ -8,8 +8,11 @@
 
 struct ObjectData
 {
-    GLuint vertexBuffer; // this stores the vertex data
     GLuint vao; // this stores the vertex attributes pointer
+    GLuint textureID;
+    // Used only for cleanup
+    GLuint textureBuffer;
+    GLuint vertexBuffer;
     int vertexCount;
 };
 
