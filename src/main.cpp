@@ -15,12 +15,14 @@ int main(int argc, char* argv[])
     window.initGL();
 
     bool running = true;
+    int now = SDL_GetTicks();
     while(running)
-    {
+    {   
+
         // Check for a quit event before passing to the GLWindow
         SDL_Event e;
         while(SDL_PollEvent(&e))
-        {
+        {   
             if(e.type == SDL_QUIT)
             {
                 running = false;
@@ -30,8 +32,12 @@ int main(int argc, char* argv[])
                 running = false;
             }
         }
-        window.render();
+        int currentTime = SDL_GetTicks();
+        int timeElapsed = currentTime - now;
+        
+        window.render(timeElapsed);
 
+        now = currentTime;
         // We sleep for 10ms here so as to prevent excessive CPU usage
         SDL_Delay(10);
     }

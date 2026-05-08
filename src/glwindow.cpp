@@ -98,8 +98,12 @@ GLuint loadShaderProgram(const char* vertShaderFilename,
     return program;
 }
 
+glm::vec4 rgbMap(glm::vec4 color) {
+    color = color / 255.0f;
+    return color;
+}
 
-ObjectData drawObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, GLuint texture=0, const std::string& colour=""){
+ObjectData createObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, const glm::vec4& colour){
     // draw a single object and return the object data
     ObjectData obj;
 
@@ -109,24 +113,6 @@ ObjectData drawObject(const GeometryData& geometry, const GLuint& shader, const 
     glBindVertexArray(vao);
 
 
-    if (texture != 0) {
-        // load texture if needed
-        glBindTexture(GL_TEXTURE_2D, texture);
-        int texLoc = glGetAttribLocation(shader, "texture");
-        GLuint texCoordBuffer = 0;
-
-        glGenBuffers(1, &texCoordBuffer);
-        glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
-        glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
-        glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
-        glEnableVertexAttribArray(texLoc);
-        obj.textureBuffer = texCoordBuffer;
-    }
-    // else{
-    //     // load colour if needed
-    //     // TODO: implement colour loading
-    // }
-    
     int vertexLoc = glGetAttribLocation(shader, "position");
     GLuint vertexBuffer = 0;
     glGenBuffers(1, &vertexBuffer);
@@ -134,18 +120,18 @@ ObjectData drawObject(const GeometryData& geometry, const GLuint& shader, const 
     glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
     glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(vertexLoc);
-    
-
-    
-
-    
 
     obj.vao = vao;
     obj.vertexCount = geometry.vertexCount();
-    obj.model = modelMatrix;
-    obj.textureID = texture;
+    obj.colour = rgbMap(colour);
     obj.vertexBuffer = vertexBuffer;
     return obj;
+}
+
+void drawObject(const ObjectData& obj){
+    glBindVertexArray(obj.vao);
+    glBindBuffer(GL_ARRAY_BUFFER, obj.vertexBuffer);
+    glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
 }
 
 OpenGLWindow::OpenGLWindow()
@@ -201,52 +187,38 @@ void OpenGLWindow::initGL()
     // then you need to place these files in build as well)
     shader = loadShaderProgram("simple.vert", "simple.frag");
     glUseProgram(shader);
-    int colorLoc = glGetUniformLocation(shader, "objectColor");
-    glUniform3f(colorLoc, 0.5f, 1.0f, 1.0f);
-
     // Load the model that we want to use and buffer the vertex attributes
     GeometryData geometry;
     geometry.loadFromOBJFile("../res/sphere-fixed.txt");
 
 
-    GLuint texture = 0;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
+    // GLuint texture = 0;
+    // glGenTextures(1, &texture);
+    // glBindTexture(GL_TEXTURE_2D, texture);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 
-    int width, height, nrChannels;
-    unsigned char *data = stbi_load("../res/sun_diffuse0.jpg", &width, &height, &nrChannels, 0);
+    // int width, height, nrChannels;
+    // unsigned char *data = stbi_load("../res/sun_diffuse0.jpg", &width, &height, &nrChannels, 0);
 
-    if (data){
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    } 
+    // if (data){
+    //     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    //     glGenerateMipmap(GL_TEXTURE_2D);
+    // } 
     
-    stbi_image_free(data);
+    // stbi_image_free(data);
 
-    // model matrix
-    glm::mat4 model_sun = glm::mat4(1.0f);
-    model_sun = glm::translate(model_sun, glm::vec3(0.0f, 0.0f, -15.0f));
-    model_sun = glm::scale(model_sun, glm::vec3(2.0f, 2.0f, 2.0f));
-    ObjectData sun = drawObject(geometry, shader, model_sun, texture);
+    ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f));
+    ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f));
+    ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f));
     objects.push_back(sun);
-
-    glm::mat4 model_moon = glm::mat4(1.0f);
-    model_moon = glm::translate(model_moon, glm::vec3(7.0f, 2.0f, -15.0f));
-    model_moon = glm::scale(model_moon, glm::vec3(0.3f, 0.3f, 0.3f));
-    ObjectData moon = drawObject(geometry, shader, model_moon, texture);
+    objects.push_back(earth);
     objects.push_back(moon);
 
-    glm::mat4 model_earth = glm::mat4(1.0f);
-    model_earth = glm::translate(model_earth, glm::vec3(6.0f, 1.0f, -15.0f));
-    model_earth = glm::scale(model_earth, glm::vec3(0.7f, 0.7f, 0.7f));
-    ObjectData earth = drawObject(geometry, shader, model_earth, texture);
-    objects.push_back(earth);
 
     // set up camera
     glm::mat4 view = glm::mat4(1.0f);
@@ -264,35 +236,54 @@ void OpenGLWindow::initGL()
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-
-
-    // sun.vao = vao;
-    // sun.vertexCount = geometry.vertexCount();
-    // sun.textureID = texture;
-    // // we need these for cleanup
-    // sun.textureBuffer = texCoordBuffer;
-    // sun.vertexBuffer = vertexBuffer;
-
     glPrintError("Setup complete", true);
 }
 
 
 
-void OpenGLWindow::render()
+void OpenGLWindow::render(int timeElapsed)
 {   
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    for (const ObjectData& obj : objects) {
-        if (obj.textureID != 0) {
-            glBindTexture(GL_TEXTURE_2D, obj.textureID);
-        }
+    float dt;
+    if (start == 1) {
+        dt = timeElapsed / 1000.0f;
+    }
+    else {
+        dt = 0.0f;
+    }
 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+    
+
+    // Sun stationary
+    glm::mat4 sun_pivot = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -15.0f));
+    objects[0].model = glm::scale(sun_pivot, glm::vec3(2.0f, 2.0f, 2.0f));
+
+    // Earth accumulate angle so speed changes don't cause jumps
+    earthAngle += 0.5f * alpha * dt ;
+    float earth_radius = 5.0f;
+    glm::mat4 earth_pivot = glm::translate(sun_pivot, glm::vec3(earth_radius * cos(earthAngle), earth_radius * sin(earthAngle), 0.0f));
+    objects[1].model = glm::scale(earth_pivot, glm::vec3(0.7f, 0.7f, 0.7f));
+
+    // Moon accumulate angle, orbit relative to unscaled earth_pivot
+    moonAngle += 1.0f * beta * dt;
+    float moon_radius = 1.2f;
+    glm::mat4 moon_pivot = glm::translate(earth_pivot, glm::vec3(moon_radius * cos(moonAngle), moon_radius * sin(moonAngle), 0.0f));
+    objects[2].model = glm::scale(moon_pivot, glm::vec3(0.3f, 0.3f, 0.3f));
+
+
+
+    for (const ObjectData& obj : objects) {
         GLuint modelLoc = glGetUniformLocation(shader, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(obj.model));
+        GLuint colourLoc = glGetUniformLocation(shader, "colour");
+        glUniform4fv(colourLoc, 1, glm::value_ptr(obj.colour));
         glBindVertexArray(obj.vao);
         glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
     }
-
-    // Swap the front and back buffers on the window, effectively putting what we just "drew"
+    
+    // wap the front and back buffers on the window, effectively putting what we just "drew"
     // onto the screen (whereas previously it only existed in memory)
     SDL_GL_SwapWindow(sdlWin);
 }
@@ -309,6 +300,30 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
         {
             return false;
         }
+        else if(e.key.keysym.sym == SDLK_SPACE)
+        {
+            if (start == 0) {
+                start = 1;
+            } else {
+                start = 0;
+            }
+        }
+        else if(e.key.keysym.sym == SDLK_UP)
+        {
+            alpha += 0.1f;
+        }
+        else if(e.key.keysym.sym == SDLK_DOWN)
+        {
+            alpha -= 0.1f;
+        }
+        else if(e.key.keysym.sym == SDLK_LEFT)
+        {
+            beta += 0.1f;
+        }
+        else if(e.key.keysym.sym == SDLK_RIGHT)
+        {
+            beta -= 0.1f;
+        }
     }
     return true;
 }
@@ -316,9 +331,7 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
 void OpenGLWindow::cleanup()
 {   
     for (ObjectData& obj : objects) {  
-        glDeleteTextures(1, &obj.textureID);
         glDeleteVertexArrays(1, &obj.vao);
-        glDeleteBuffers(1, &obj.textureBuffer);
         glDeleteBuffers(1, &obj.vertexBuffer);
     }
     SDL_DestroyWindow(sdlWin);
