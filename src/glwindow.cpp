@@ -70,6 +70,7 @@ GLuint loadShader(const char* shaderFilename, GLenum shaderType)
     return shader;
 }
 
+
 GLuint loadShaderProgram(const char* vertShaderFilename,
                        const char* fragShaderFilename)
 {
@@ -95,6 +96,50 @@ GLuint loadShaderProgram(const char* vertShaderFilename,
     }
 
     return program;
+}
+
+
+ObjectData drawObject(const GeometryData& geometry, const GLuint& vao, const GLuint& shader, const glm::mat4& modelMatrix, GLuint texture=0, const std::string& colour=""){
+    // draw a single object and return the object data
+    ObjectData obj;
+    if (texture != 0) {
+        // load texture if needed
+        glBindTexture(GL_TEXTURE_2D, texture);
+        int texLoc = glGetAttribLocation(shader, "texture");
+        GLuint texCoordBuffer = 0;
+
+        glGenBuffers(1, &texCoordBuffer);
+        glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
+        glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
+        glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(texLoc);
+        obj.textureBuffer = texCoordBuffer;
+    }
+    // else{
+    //     // load colour if needed
+    //     // TODO: implement colour loading
+    // }
+    
+    int vertexLoc = glGetAttribLocation(shader, "position");
+    GLuint vertexBuffer = 0;
+    glGenBuffers(1, &vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
+    glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
+    glEnableVertexAttribArray(vertexLoc);
+    
+
+    // setup model matrix
+    GLuint modelLoc = glGetUniformLocation(shader, "model");
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    
+
+    obj.vao = vao;
+    obj.vertexCount = geometry.vertexCount();
+    obj.model = modelMatrix;
+    obj.textureID = texture;
+    obj.vertexBuffer = vertexBuffer;
+    return obj;
 }
 
 OpenGLWindow::OpenGLWindow()
@@ -154,7 +199,6 @@ void OpenGLWindow::initGL()
     // then you need to place these files in build as well)
     shader = loadShaderProgram("simple.vert", "simple.frag");
     glUseProgram(shader);
-
     int colorLoc = glGetUniformLocation(shader, "objectColor");
     glUniform3f(colorLoc, 0.5f, 1.0f, 1.0f);
 
@@ -162,7 +206,7 @@ void OpenGLWindow::initGL()
     GeometryData geometry;
     geometry.loadFromOBJFile("../res/sphere-fixed.txt");
 
-    int vertexLoc = glGetAttribLocation(shader, "position");
+    // int vertexLoc = glGetAttribLocation(shader, "position");
     // float vertices[9] = { 0.0f,  0.5f, 0.0f,
     //                      -0.5f, -0.5f, 0.0f,
     //                       0.5f, -0.5f, 0.0f };
@@ -188,63 +232,66 @@ void OpenGLWindow::initGL()
     } 
     
     stbi_image_free(data);
-    GLuint vertexBuffer = 0;
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
-    glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
-    glEnableVertexAttribArray(vertexLoc);
+    // GLuint vertexBuffer = 0;
+    // glGenBuffers(1, &vertexBuffer);
+    // glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    // glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
+    // glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
+    // glEnableVertexAttribArray(vertexLoc);
 
     // create a separate buffer for texture
-    int texLoc = glGetAttribLocation(shader, "texture");
-    GLuint texCoordBuffer = 0;
 
-    glGenBuffers(1, &texCoordBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
-    glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
-    glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
-    glEnableVertexAttribArray(texLoc);
+    // GLuint texCoordBuffer = 0;
+
+    // glGenBuffers(1, &texCoordBuffer);
+    // glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
+    // glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
+    // glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
+    // glEnableVertexAttribArray(texLoc);
 
     // model matrix
-    glm::mat4 model = glm::mat4(1.0f);
-    
-    // view matrix
+    glm::mat4 model_sun = glm::mat4(1.0f);
+    ObjectData sun = drawObject(geometry, vao, shader, glm::mat4(1.0f), texture);
+    objects.push_back(sun);
+
+
+    // set up camera
     glm::mat4 view = glm::mat4(1.0f);
     view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f));
-
+    
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
-
-    GLuint modelLoc = 0;
+    
     GLuint viewLoc = 0;
     GLuint projectionLoc = 0;
-    modelLoc = glGetUniformLocation(shader, "model");
     viewLoc = glGetUniformLocation(shader, "view");
     projectionLoc = glGetUniformLocation(shader, "projection");
 
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    // glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 
-    ObjectData sun;
-    sun.vao = vao;
-    sun.vertexCount = geometry.vertexCount();
-    sun.textureID = texture;
-    // we need these for cleanup
-    sun.textureBuffer = texCoordBuffer;
-    sun.vertexBuffer = vertexBuffer;
-    objects.push_back(sun);
+
+    // sun.vao = vao;
+    // sun.vertexCount = geometry.vertexCount();
+    // sun.textureID = texture;
+    // // we need these for cleanup
+    // sun.textureBuffer = texCoordBuffer;
+    // sun.vertexBuffer = vertexBuffer;
 
     glPrintError("Setup complete", true);
 }
+
+
 
 void OpenGLWindow::render()
 {   
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     for (const ObjectData& obj : objects) {
-        glBindTexture(GL_TEXTURE_2D, obj.textureID);
+        if (obj.textureID != 0) {
+            glBindTexture(GL_TEXTURE_2D, obj.textureID);
+        }
         glBindVertexArray(obj.vao);
         glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
     }
@@ -275,7 +322,6 @@ void OpenGLWindow::cleanup()
     for (ObjectData& obj : objects) {  
         glDeleteTextures(1, &obj.textureID);
         glDeleteVertexArrays(1, &obj.vao);
-        
         glDeleteBuffers(1, &obj.textureBuffer);
         glDeleteBuffers(1, &obj.vertexBuffer);
     }

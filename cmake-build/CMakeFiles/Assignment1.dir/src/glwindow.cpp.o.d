@@ -864,7 +864,6 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/glwindow.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h \
-  /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/glm.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/detail/_fixes.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/detail/setup.hpp \
@@ -1050,6 +1049,7 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/vector_relational.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/integer.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/detail/func_integer.inl \
+  /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/gtc/matrix_transform.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/gtc/../mat4x4.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-src/glm/gtc/../vec2.hpp \

@@ -16,13 +16,13 @@ class GeometryData
 public:
     void loadFromOBJFile(std::string filename);
 
-    int vertexCount();
+    int vertexCount() const;
 
-    void* vertexData();
-    void* textureCoordData();
-    void* normalData();
-    void* tangentData();
-    void* bitangentData();
+    void* vertexData() const;
+    void* textureCoordData() const;
+    void* normalData() const;
+    void* tangentData() const;
+    void* bitangentData() const;
 
 private:
     std::vector<float> vertices;

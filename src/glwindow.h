@@ -5,7 +5,7 @@
 
 #include "geometry.h"
 #include <vector>
-
+#include <glm/glm.hpp>
 struct ObjectData
 {
     GLuint vao; // this stores the vertex attributes pointer
@@ -14,6 +14,7 @@ struct ObjectData
     GLuint textureBuffer;
     GLuint vertexBuffer;
     int vertexCount;
+    glm::mat4 model;
 };
 
 class OpenGLWindow

@@ -289,32 +289,32 @@ void GeometryData::loadFromOBJFile(string filename)
     cout << "Successfully loaded an OBJ with " << vertices.size()/3 << " vertices " << endl;
 }
 
-int GeometryData::vertexCount()
+int GeometryData::vertexCount() const
 {
     return vertices.size()/3;
 }
 
-void* GeometryData::vertexData()
+void* GeometryData::vertexData() const
 {
     return (void*)&vertices[0];
 }
 
-void* GeometryData::textureCoordData()
+void* GeometryData::textureCoordData() const
 {
     return (void*)&textureCoords[0];
 }
 
-void* GeometryData::normalData()
+void* GeometryData::normalData() const
 {
     return (void*)&normals[0];
 }
 
-void* GeometryData::tangentData()
+void* GeometryData::tangentData() const
 {
     return (void*)&tangents[0];
 }
 
-void* GeometryData::bitangentData()
+void* GeometryData::bitangentData() const
 {
     return (void*)&bitangents[0];
 }

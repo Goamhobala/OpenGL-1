@@ -1995,6 +1995,7 @@ CMakeFiles/Assignment1.dir/src/main.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/main.
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__xlocale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_abort.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_bounds.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctermid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctype.h \
@@ -2002,6 +2003,7 @@ CMakeFiles/Assignment1.dir/src/main.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/main.
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_mb_cur_max.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_printf.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h \
@@ -2030,6 +2032,7 @@ CMakeFiles/Assignment1.dir/src/main.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/main.
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/all_of.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/any_of.h \
@@ -2541,8 +2544,10 @@ CMakeFiles/Assignment1.dir/src/main.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/main.
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cerrno \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cfloat \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/climits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/clocale \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cmath \
@@ -2753,6 +2758,186 @@ CMakeFiles/Assignment1.dir/src/main.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/main.
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.hpp \
+  _deps/glm-src/glm/detail/type_mat2x3.hpp \
+  _deps/glm-src/glm/detail/type_mat2x3.inl \
+  _deps/glm-src/glm/detail/type_mat2x4.hpp \
+  _deps/glm-src/glm/detail/type_mat2x4.inl \
+  _deps/glm-src/glm/detail/type_mat3x2.hpp \
+  _deps/glm-src/glm/detail/type_mat3x2.inl \
+  _deps/glm-src/glm/detail/type_mat3x3.hpp \
+  _deps/glm-src/glm/detail/type_mat3x3.inl \
+  _deps/glm-src/glm/detail/type_mat3x4.hpp \
+  _deps/glm-src/glm/detail/type_mat3x4.inl \
+  _deps/glm-src/glm/detail/type_mat4x2.hpp \
+  _deps/glm-src/glm/detail/type_mat4x2.inl \
+  _deps/glm-src/glm/detail/type_mat4x3.hpp \
+  _deps/glm-src/glm/detail/type_mat4x3.inl \
+  _deps/glm-src/glm/detail/type_mat4x4.hpp \
+  _deps/glm-src/glm/detail/type_mat4x4.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
+  _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/detail/func_geometric.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/detail/func_matrix.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/ext/scalar_int_sized.hpp \
+  _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int2.hpp \
+  _deps/glm-src/glm/ext/vector_int3.hpp \
+  _deps/glm-src/glm/ext/vector_int4.hpp \
+  _deps/glm-src/glm/ext/vector_uint2.hpp \
+  _deps/glm-src/glm/ext/vector_uint3.hpp \
+  _deps/glm-src/glm/ext/vector_uint4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool2.hpp \
+  _deps/glm-src/glm/ext/vector_bool2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool3.hpp \
+  _deps/glm-src/glm/ext/vector_bool3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool4.hpp \
+  _deps/glm-src/glm/ext/vector_bool4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double2.hpp \
+  _deps/glm-src/glm/ext/vector_double2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double3.hpp \
+  _deps/glm-src/glm/ext/vector_double3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double4.hpp \
+  _deps/glm-src/glm/ext/vector_double4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float2.hpp \
+  _deps/glm-src/glm/ext/vector_float2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float3.hpp \
+  _deps/glm-src/glm/ext/vector_float3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float4.hpp \
+  _deps/glm-src/glm/ext/vector_float4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_int2.hpp \
+  _deps/glm-src/glm/ext/vector_int2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int3.hpp \
+  _deps/glm-src/glm/ext/vector_int3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int4.hpp \
+  _deps/glm-src/glm/ext/vector_int4_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint2.hpp \
+  _deps/glm-src/glm/ext/vector_uint2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint3.hpp \
+  _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint4.hpp \
+  _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/simd/platform.h \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/func_integer.inl \
+  _deps/glm-src/glm/detail/func_packing.inl \
+  _deps/glm-src/glm/detail/func_trigonometric.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_half.hpp \
+  _deps/glm-src/glm/detail/type_half.inl \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/fwd.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/glm.hpp \
+  _deps/glm-src/glm/integer.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/packing.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/glwindow.h \
   /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL.h \
