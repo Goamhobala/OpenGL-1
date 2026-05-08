@@ -99,9 +99,16 @@ GLuint loadShaderProgram(const char* vertShaderFilename,
 }
 
 
-ObjectData drawObject(const GeometryData& geometry, const GLuint& vao, const GLuint& shader, const glm::mat4& modelMatrix, GLuint texture=0, const std::string& colour=""){
+ObjectData drawObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, GLuint texture=0, const std::string& colour=""){
     // draw a single object and return the object data
     ObjectData obj;
+
+        
+    GLuint vao = 0;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+
     if (texture != 0) {
         // load texture if needed
         glBindTexture(GL_TEXTURE_2D, texture);
@@ -129,9 +136,8 @@ ObjectData drawObject(const GeometryData& geometry, const GLuint& vao, const GLu
     glEnableVertexAttribArray(vertexLoc);
     
 
-    // setup model matrix
-    GLuint modelLoc = glGetUniformLocation(shader, "model");
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    
+
     
 
     obj.vao = vao;
@@ -189,10 +195,6 @@ void OpenGLWindow::initGL()
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     glClearColor(0,0,0,1);
-    
-    GLuint vao = 0;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
 
     // Note that this path is relative to your working directory
     // when running the program (IE if you run from within build
@@ -206,12 +208,6 @@ void OpenGLWindow::initGL()
     GeometryData geometry;
     geometry.loadFromOBJFile("../res/sphere-fixed.txt");
 
-    // int vertexLoc = glGetAttribLocation(shader, "position");
-    // float vertices[9] = { 0.0f,  0.5f, 0.0f,
-    //                      -0.5f, -0.5f, 0.0f,
-    //                       0.5f, -0.5f, 0.0f };
-
-    // Binding texture
 
     GLuint texture = 0;
     glGenTextures(1, &texture);
@@ -232,28 +228,23 @@ void OpenGLWindow::initGL()
     } 
     
     stbi_image_free(data);
-    // GLuint vertexBuffer = 0;
-    // glGenBuffers(1, &vertexBuffer);
-    // glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    // glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
-    // glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
-    // glEnableVertexAttribArray(vertexLoc);
-
-    // create a separate buffer for texture
-
-    // GLuint texCoordBuffer = 0;
-
-    // glGenBuffers(1, &texCoordBuffer);
-    // glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
-    // glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
-    // glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
-    // glEnableVertexAttribArray(texLoc);
 
     // model matrix
     glm::mat4 model_sun = glm::mat4(1.0f);
-    ObjectData sun = drawObject(geometry, vao, shader, glm::mat4(1.0f), texture);
+    ObjectData sun = drawObject(geometry, shader, model_sun, texture);
     objects.push_back(sun);
 
+    glm::mat4 model_moon = glm::mat4(1.0f);
+    model_moon = glm::translate(model_moon, glm::vec3(3.0f, 2.0f, 0.0f));
+    model_moon = glm::scale(model_moon, glm::vec3(0.3f, 0.3f, 0.3f));
+    ObjectData moon = drawObject(geometry, shader, model_moon, texture);
+    objects.push_back(moon);
+
+    glm::mat4 model_earth = glm::mat4(1.0f);
+    model_earth = glm::translate(model_earth, glm::vec3(2.0f, 1.0f, 0.0f));
+    model_earth = glm::scale(model_earth, glm::vec3(0.7f, 0.7f, 0.7f));
+    ObjectData earth = drawObject(geometry, shader, model_earth, texture);
+    objects.push_back(earth);
 
     // set up camera
     glm::mat4 view = glm::mat4(1.0f);
@@ -292,6 +283,9 @@ void OpenGLWindow::render()
         if (obj.textureID != 0) {
             glBindTexture(GL_TEXTURE_2D, obj.textureID);
         }
+
+        GLuint modelLoc = glGetUniformLocation(shader, "model");
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(obj.model));
         glBindVertexArray(obj.vao);
         glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
     }
