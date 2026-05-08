@@ -8,6 +8,10 @@
 #include "geometry.h"
 #include "stb_image.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 using namespace std;
 
 const char* glGetErrorString(GLenum error)
@@ -194,11 +198,35 @@ void OpenGLWindow::initGL()
     // create a separate buffer for texture
     int texLoc = glGetAttribLocation(shader, "texture");
     GLuint texCoordBuffer = 0;
+
     glGenBuffers(1, &texCoordBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, texCoordBuffer);
     glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
     glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(texLoc);
+
+    // model matrix
+    glm::mat4 model = glm::mat4(1.0f);
+    
+    // view matrix
+    glm::mat4 view = glm::mat4(1.0f);
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f));
+
+    glm::mat4 projection = glm::mat4(1.0f);
+    projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+
+    GLuint modelLoc = 0;
+    GLuint viewLoc = 0;
+    GLuint projectionLoc = 0;
+    modelLoc = glGetUniformLocation(shader, "model");
+    viewLoc = glGetUniformLocation(shader, "view");
+    projectionLoc = glGetUniformLocation(shader, "projection");
+
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
 
     ObjectData sun;
     sun.vao = vao;

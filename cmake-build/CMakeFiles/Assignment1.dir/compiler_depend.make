@@ -831,6 +831,7 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/g
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__xlocale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_abort.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_bounds.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctermid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctype.h \
@@ -838,6 +839,7 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/g
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_mb_cur_max.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_printf.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h \
@@ -866,6 +868,7 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/g
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/all_of.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/any_of.h \
@@ -1406,8 +1409,10 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/g
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cerrno \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cfloat \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/climits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/clocale \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cmath \
@@ -1629,6 +1634,298 @@ CMakeFiles/Assignment1.dir/src/glwindow.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/g
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.hpp \
+  _deps/glm-src/glm/detail/type_mat2x3.hpp \
+  _deps/glm-src/glm/detail/type_mat2x3.inl \
+  _deps/glm-src/glm/detail/type_mat2x4.hpp \
+  _deps/glm-src/glm/detail/type_mat2x4.inl \
+  _deps/glm-src/glm/detail/type_mat3x2.hpp \
+  _deps/glm-src/glm/detail/type_mat3x2.inl \
+  _deps/glm-src/glm/detail/type_mat3x3.hpp \
+  _deps/glm-src/glm/detail/type_mat3x3.inl \
+  _deps/glm-src/glm/detail/type_mat3x4.hpp \
+  _deps/glm-src/glm/detail/type_mat3x4.inl \
+  _deps/glm-src/glm/detail/type_mat4x2.hpp \
+  _deps/glm-src/glm/detail/type_mat4x2.inl \
+  _deps/glm-src/glm/detail/type_mat4x3.hpp \
+  _deps/glm-src/glm/detail/type_mat4x3.inl \
+  _deps/glm-src/glm/detail/type_mat4x4.hpp \
+  _deps/glm-src/glm/detail/type_mat4x4.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
+  _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/detail/func_geometric.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/detail/func_matrix.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/ext/scalar_int_sized.hpp \
+  _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int2.hpp \
+  _deps/glm-src/glm/ext/vector_int3.hpp \
+  _deps/glm-src/glm/ext/vector_int4.hpp \
+  _deps/glm-src/glm/ext/vector_uint2.hpp \
+  _deps/glm-src/glm/ext/vector_uint3.hpp \
+  _deps/glm-src/glm/ext/vector_uint4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool2.hpp \
+  _deps/glm-src/glm/ext/vector_bool2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool3.hpp \
+  _deps/glm-src/glm/ext/vector_bool3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool4.hpp \
+  _deps/glm-src/glm/ext/vector_bool4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double2.hpp \
+  _deps/glm-src/glm/ext/vector_double2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double3.hpp \
+  _deps/glm-src/glm/ext/vector_double3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double4.hpp \
+  _deps/glm-src/glm/ext/vector_double4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float2.hpp \
+  _deps/glm-src/glm/ext/vector_float2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float3.hpp \
+  _deps/glm-src/glm/ext/vector_float3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float4.hpp \
+  _deps/glm-src/glm/ext/vector_float4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_int2.hpp \
+  _deps/glm-src/glm/ext/vector_int2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int3.hpp \
+  _deps/glm-src/glm/ext/vector_int3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int4.hpp \
+  _deps/glm-src/glm/ext/vector_int4_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint2.hpp \
+  _deps/glm-src/glm/ext/vector_uint2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint3.hpp \
+  _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint4.hpp \
+  _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/simd/platform.h \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/func_integer.inl \
+  _deps/glm-src/glm/detail/func_packing.inl \
+  _deps/glm-src/glm/detail/func_trigonometric.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_half.hpp \
+  _deps/glm-src/glm/detail/type_half.inl \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/fwd.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/glm.hpp \
+  _deps/glm-src/glm/ext/scalar_constants.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/ext/scalar_constants.hpp \
+  _deps/glm-src/glm/ext/scalar_constants.inl \
+  _deps/glm-src/glm/gtc/constants.hpp \
+  _deps/glm-src/glm/gtc/constants.inl \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/ext/matrix_clip_space.hpp \
+  _deps/glm-src/glm/ext/matrix_clip_space.inl \
+  _deps/glm-src/glm/ext/matrix_projection.hpp \
+  _deps/glm-src/glm/ext/matrix_projection.inl \
+  _deps/glm-src/glm/ext/matrix_transform.hpp \
+  _deps/glm-src/glm/ext/matrix_transform.inl \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_mat3x3.hpp \
+  _deps/glm-src/glm/detail/type_mat4x4.hpp \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/type_mat3x3.hpp \
+  _deps/glm-src/glm/detail/type_mat4x4.hpp \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/ext/quaternion_common.hpp \
+  _deps/glm-src/glm/ext/quaternion_geometric.hpp \
+  _deps/glm-src/glm/ext/quaternion_relational.hpp \
+  _deps/glm-src/glm/ext/quaternion_relational.inl \
+  _deps/glm-src/glm/ext/vector_relational.hpp \
+  _deps/glm-src/glm/gtc/constants.hpp \
+  _deps/glm-src/glm/gtc/matrix_transform.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_float.hpp \
+  _deps/glm-src/glm/detail/type_quat.hpp \
+  _deps/glm-src/glm/detail/type_quat.inl \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/ext/vector_relational.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/ext/quaternion_geometric.hpp \
+  _deps/glm-src/glm/ext/quaternion_geometric.inl \
+  _deps/glm-src/glm/ext/scalar_constants.hpp \
+  _deps/glm-src/glm/ext/scalar_int_sized.hpp \
+  _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int1.hpp \
+  _deps/glm-src/glm/ext/vector_uint1.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/ext/quaternion_common.hpp \
+  _deps/glm-src/glm/ext/quaternion_common.inl \
+  _deps/glm-src/glm/ext/quaternion_double.hpp \
+  _deps/glm-src/glm/ext/quaternion_double_precision.hpp \
+  _deps/glm-src/glm/ext/quaternion_float.hpp \
+  _deps/glm-src/glm/ext/quaternion_float_precision.hpp \
+  _deps/glm-src/glm/ext/quaternion_geometric.hpp \
+  _deps/glm-src/glm/ext/quaternion_relational.hpp \
+  _deps/glm-src/glm/ext/quaternion_transform.hpp \
+  _deps/glm-src/glm/ext/quaternion_transform.inl \
+  _deps/glm-src/glm/ext/quaternion_trigonometric.hpp \
+  _deps/glm-src/glm/ext/quaternion_trigonometric.inl \
+  _deps/glm-src/glm/ext/scalar_constants.hpp \
+  _deps/glm-src/glm/ext/vector_bool1.hpp \
+  _deps/glm-src/glm/ext/vector_bool1_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double1.hpp \
+  _deps/glm-src/glm/ext/vector_double1_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float1.hpp \
+  _deps/glm-src/glm/ext/vector_float1_precision.hpp \
+  _deps/glm-src/glm/ext/vector_int1.hpp \
+  _deps/glm-src/glm/ext/vector_int1_sized.hpp \
+  _deps/glm-src/glm/ext/vector_relational.hpp \
+  _deps/glm-src/glm/ext/vector_relational.inl \
+  _deps/glm-src/glm/ext/vector_uint1.hpp \
+  _deps/glm-src/glm/ext/vector_uint1_sized.hpp \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/gtc/constants.hpp \
+  _deps/glm-src/glm/gtc/matrix_transform.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/gtc/epsilon.hpp \
+  _deps/glm-src/glm/gtc/epsilon.inl \
+  _deps/glm-src/glm/gtc/quaternion.hpp \
+  _deps/glm-src/glm/gtc/quaternion.inl \
+  _deps/glm-src/glm/gtc/vec1.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
+  _deps/glm-src/glm/gtc/matrix_transform.hpp \
+  _deps/glm-src/glm/gtc/matrix_transform.inl \
+  _deps/glm-src/glm/gtc/type_ptr.hpp \
+  _deps/glm-src/glm/gtc/type_ptr.inl \
+  _deps/glm-src/glm/integer.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/packing.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
   /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h \
   /Volumes/MAC_KIOXIA/OpenGL1/src/glwindow.h \
@@ -2758,15 +3055,7 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
   /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h
 
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h:
-
-/Volumes/MAC_KIOXIA/OpenGL1/src/stb_image.cpp:
-
 /Volumes/MAC_KIOXIA/OpenGL1/src/main.cpp:
-
-/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/close_code.h:
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_video.h:
 
@@ -2794,8 +3083,6 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_pixels.h:
 
-/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_mutex.h:
-
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_metal.h:
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_mouse.h:
@@ -2805,8 +3092,6 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_main.h:
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_keycode.h:
-
-/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_hints.h:
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_hidapi.h:
 
@@ -2832,6 +3117,246 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Volumes/MAC_KIOXIA/OpenGL1/include/stb_image.h:
 
+_deps/glm-src/glm/packing.hpp:
+
+_deps/glm-src/glm/integer.hpp:
+
+_deps/glm-src/glm/gtc/type_ptr.hpp:
+
+_deps/glm-src/glm/gtc/quaternion.inl:
+
+_deps/glm-src/glm/gtc/epsilon.hpp:
+
+_deps/glm-src/glm/ext/vector_uint1_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_double1.hpp:
+
+_deps/glm-src/glm/ext/vector_bool1_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_bool1.hpp:
+
+_deps/glm-src/glm/ext/quaternion_trigonometric.hpp:
+
+_deps/glm-src/glm/ext/quaternion_transform.inl:
+
+_deps/glm-src/glm/ext/quaternion_transform.hpp:
+
+_deps/glm-src/glm/ext/quaternion_double_precision.hpp:
+
+_deps/glm-src/glm/ext/quaternion_geometric.inl:
+
+_deps/glm-src/glm/detail/type_quat.inl:
+
+_deps/glm-src/glm/detail/type_float.hpp:
+
+_deps/glm-src/glm/ext/quaternion_geometric.hpp:
+
+_deps/glm-src/glm/ext/quaternion_common.hpp:
+
+_deps/glm-src/glm/ext/matrix_transform.hpp:
+
+_deps/glm-src/glm/ext/matrix_projection.inl:
+
+_deps/glm-src/glm/ext/matrix_projection.hpp:
+
+_deps/glm-src/glm/ext/matrix_clip_space.inl:
+
+_deps/glm-src/glm/ext/matrix_clip_space.hpp:
+
+_deps/glm-src/glm/trigonometric.hpp:
+
+_deps/glm-src/glm/gtc/constants.inl:
+
+_deps/glm-src/glm/gtc/constants.hpp:
+
+/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/close_code.h:
+
+_deps/glm-src/glm/ext/scalar_constants.inl:
+
+_deps/glm-src/glm/ext/scalar_constants.hpp:
+
+_deps/glm-src/glm/fwd.hpp:
+
+_deps/glm-src/glm/detail/type_half.inl:
+
+_deps/glm-src/glm/ext/vector_uint4_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_uint3_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_uint2_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_int4_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_int3_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_float4_precision.hpp:
+
+/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_mutex.h:
+
+_deps/glm-src/glm/ext/vector_float4.hpp:
+
+_deps/glm-src/glm/ext/quaternion_trigonometric.inl:
+
+_deps/glm-src/glm/ext/vector_float3_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_float2_precision.hpp:
+
+/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_hints.h:
+
+_deps/glm-src/glm/ext/vector_float2.hpp:
+
+_deps/glm-src/glm/ext/vector_double4_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_double3.hpp:
+
+_deps/glm-src/glm/ext/vector_double2_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_double2.hpp:
+
+_deps/glm-src/glm/ext/vector_bool4.hpp:
+
+_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x2_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x2.hpp:
+
+_deps/glm-src/glm/ext/matrix_double2x2.hpp:
+
+_deps/glm-src/glm/ext/vector_uint4.hpp:
+
+_deps/glm-src/glm/ext/vector_uint3.hpp:
+
+_deps/glm-src/glm/ext/vector_uint2.hpp:
+
+_deps/glm-src/glm/ext/vector_int3.hpp:
+
+_deps/glm-src/glm/detail/type_vec4.inl:
+
+_deps/glm-src/glm/detail/type_mat2x2.inl:
+
+_deps/glm-src/glm/mat4x4.hpp:
+
+_deps/glm-src/glm/mat4x3.hpp:
+
+_deps/glm-src/glm/mat4x2.hpp:
+
+_deps/glm-src/glm/mat3x4.hpp:
+
+_deps/glm-src/glm/mat2x4.hpp:
+
+_deps/glm-src/glm/mat2x2.hpp:
+
+_deps/glm-src/glm/simd/platform.h:
+
+_deps/glm-src/glm/geometric.hpp:
+
+_deps/glm-src/glm/detail/func_geometric.inl:
+
+_deps/glm-src/glm/exponential.hpp:
+
+_deps/glm-src/glm/detail/type_vec1.inl:
+
+_deps/glm-src/glm/detail/func_exponential.inl:
+
+_deps/glm-src/glm/detail/func_common.inl:
+
+_deps/glm-src/glm/detail/compute_common.hpp:
+
+_deps/glm-src/glm/detail/_vectorize.hpp:
+
+_deps/glm-src/glm/detail/compute_vector_relational.hpp:
+
+_deps/glm-src/glm/vector_relational.hpp:
+
+_deps/glm-src/glm/detail/setup.hpp:
+
+_deps/glm-src/glm/detail/qualifier.hpp:
+
+_deps/glm-src/glm/detail/func_vector_relational.inl:
+
+_deps/glm-src/glm/common.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x4_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x4.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x3_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x3.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x2_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x2.hpp:
+
+_deps/glm-src/glm/ext/matrix_float3x4_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float3x2_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float3x2.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x4_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x3_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double4x4.hpp:
+
+_deps/glm-src/glm/ext/matrix_double4x3_precision.hpp:
+
+_deps/glm-src/glm/ext/quaternion_float.hpp:
+
+_deps/glm-src/glm/ext/matrix_double4x3.hpp:
+
+_deps/glm-src/glm/ext/matrix_double3x4_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double3x4.hpp:
+
+_deps/glm-src/glm/ext/matrix_double3x3.hpp:
+
+/Volumes/MAC_KIOXIA/OpenGL1/src/stb_image.cpp:
+
+_deps/glm-src/glm/ext/matrix_double3x2_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double2x4_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double2x4.hpp:
+
+_deps/glm-src/glm/mat3x2.hpp:
+
+_deps/glm-src/glm/ext/matrix_double2x3_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double2x3.hpp:
+
+_deps/glm-src/glm/detail/type_vec3.hpp:
+
+_deps/glm-src/glm/detail/type_vec2.hpp:
+
+_deps/glm-src/glm/detail/type_mat4x4.inl:
+
+_deps/glm-src/glm/detail/type_mat4x3.inl:
+
+_deps/glm-src/glm/detail/type_mat4x3.hpp:
+
+_deps/glm-src/glm/detail/func_trigonometric.inl:
+
+_deps/glm-src/glm/detail/type_mat4x2.inl:
+
+_deps/glm-src/glm/detail/type_mat3x4.inl:
+
+_deps/glm-src/glm/detail/type_mat3x3.inl:
+
+_deps/glm-src/glm/detail/type_mat3x2.inl:
+
+_deps/glm-src/glm/detail/type_mat2x4.inl:
+
+_deps/glm-src/glm/detail/type_mat2x3.inl:
+
+_deps/glm-src/glm/detail/type_mat2x2.hpp:
+
+_deps/glm-src/glm/ext/quaternion_common.inl:
+
+_deps/glm-src/glm/matrix.hpp:
+
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/inttypes.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/arm_vector_types.h:
@@ -2842,17 +3367,31 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h:
 
+_deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/float.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cfloat:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h:
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_timer.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h:
 
+_deps/glm-src/glm/detail/type_mat2x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h:
 
 /Volumes/MAC_KIOXIA/OpenGL1/src/geometry.h:
+
+_deps/glm-src/glm/vec4.hpp:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h:
 
@@ -2873,6 +3412,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_nullptr_t.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_null.h:
+
+_deps/glm-src/glm/ext/vector_int2_sized.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/unique_copy.h:
 
@@ -2907,6 +3448,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/hypot.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/appleapiopts.h:
+
+_deps/glm-src/glm/ext/quaternion_double.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h:
 
@@ -2944,6 +3487,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h:
 
+_deps/glm-src/glm/ext/quaternion_relational.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_sigset_t.h:
@@ -2957,6 +3502,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_pid_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_null.h:
+
+_deps/glm-src/glm/ext/matrix_float3x3_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h:
 
@@ -3012,6 +3559,10 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/__endian.h:
 
+_deps/glm-src/glm/ext/matrix_double3x2.hpp:
+
+_deps/glm-src/glm/detail/type_mat4x4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_blkcnt_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h:
@@ -3029,6 +3580,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/signal.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h:
+
+_deps/glm-src/glm/detail/type_vec3.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libkern/arm/_OSByteOrder.h:
 
@@ -3051,6 +3604,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/version:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_set.h:
+
+_deps/glm-src/glm/ext/vector_bool3_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/ranges_transform.h:
 
@@ -3116,6 +3671,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iosfwd:
 
+_deps/glm-src/glm/detail/type_half.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/unwrap_range.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/functional:
@@ -3164,6 +3721,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/piecewise_construct.h:
 
+_deps/glm-src/glm/mat2x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_mbstate_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/array.h:
@@ -3173,6 +3732,10 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/push_heap.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string:
+
+_deps/glm-src/glm/ext/matrix_transform.inl:
+
+_deps/glm-src/glm/ext/vector_float3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/assignable.h:
 
@@ -3254,6 +3817,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_audio.h:
 
+_deps/glm-src/glm/detail/type_vec2.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_unsigned_integer.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_trivially_relocatable.h:
@@ -3267,6 +3832,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/iterator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_trivially_copyable.h:
+
+_deps/glm-src/glm/ext/vector_uint1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_trivially_assignable.h:
 
@@ -3298,7 +3865,11 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_mach_port_t.h:
 
+_deps/glm-src/glm/gtc/epsilon.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_pointer.h:
+
+_deps/glm-src/glm/detail/type_mat2x4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/regular.h:
 
@@ -3346,6 +3917,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_convertible.h:
 
+_deps/glm-src/glm/ext/vector_relational.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg:
@@ -3358,6 +3931,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_char_like_type.h:
 
+_deps/glm-src/glm/detail/func_packing.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_nlink_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_base_of.h:
@@ -3367,6 +3942,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_negate.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_arithmetic.h:
+
+_deps/glm-src/glm/ext/vector_bool3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_always_bitcastable.h:
 
@@ -3388,6 +3965,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/enable_if.h:
 
+_deps/glm-src/glm/mat3x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__wctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/unwrap_ref.h:
@@ -3404,11 +3983,15 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/desugars_to.h:
 
+_deps/glm-src/glm/ext/matrix_float2x4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_const.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg___gnuc_va_list.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/datasizeof.h:
+
+_deps/glm-src/glm/detail/type_mat4x2.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/generate.h:
 
@@ -3423,6 +4006,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/common_reference.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/alignment_of.h:
+
+_deps/glm-src/glm/ext/vector_float1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_flag.h:
 
@@ -3445,6 +4030,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_sensor.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_array.h:
+
+_deps/glm-src/glm/detail/_fixes.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_isset.h:
 
@@ -3502,6 +4089,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer:
 
+_deps/glm-src/glm/ext/scalar_uint_sized.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_first_of.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/subrange.h:
@@ -3542,6 +4131,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_keyboard.h:
 
+_deps/glm-src/glm/detail/func_matrix.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/dangling.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/comp.h:
@@ -3571,6 +4162,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory_resource/polymorphic_allocator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_mutex_t.h:
+
+_deps/glm-src/glm/gtc/matrix_transform.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_nl_item.h:
 
@@ -3662,6 +4255,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/vector.h:
 
+_deps/glm-src/glm/gtc/vec1.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/error_functions.h:
@@ -3696,6 +4291,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_pointer.h:
 
+_deps/glm-src/glm/detail/type_mat3x4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__string/char_traits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ostreambuf_iterator.h:
@@ -3712,9 +4309,13 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/istream_iterator.h:
 
+_deps/glm-src/glm/ext/matrix_double4x2.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_copy.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/front_insert_iterator.h:
+
+_deps/glm-src/glm/detail/type_quat.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:
 
@@ -3818,6 +4419,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h:
 
+_deps/glm-src/glm/ext/vector_int4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/reverse_iterator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h:
@@ -3843,6 +4446,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/function.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread/qos.h:
+
+_deps/glm-src/glm/ext/vector_double3_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/construct_at.h:
 
@@ -3888,6 +4493,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/concepts.h:
 
+_deps/glm-src/glm/ext/vector_int2.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_unbounded_array.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_aggregate.h:
@@ -3895,6 +4502,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/for_each_segment.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_literal_type.h:
+
+_deps/glm-src/glm/ext/quaternion_relational.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_mb_cur_max.h:
 
@@ -3915,6 +4524,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_init.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_entry.h:
+
+_deps/glm-src/glm/detail/func_integer.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:
 
@@ -3958,6 +4569,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/language.h:
 
+_deps/glm-src/glm/ext/scalar_int_sized.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__debug_utils/strict_weak_ordering_check.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__debug_utils/randomize_range.h:
@@ -3965,6 +4578,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/errno.h:
+
+_deps/glm-src/glm/ext/vector_double1_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/perms.h:
 
@@ -3996,6 +4611,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__undef_macros:
 
+_deps/glm-src/glm/ext/matrix_double4x4_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/relation.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/in_place.h:
@@ -4009,6 +4626,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_mcontext.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/indic_conjunct_break_table.h:
+
+_deps/glm-src/glm/detail/type_vec1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/derived_from.h:
 
@@ -4038,6 +4657,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/operations.h:
 
+_deps/glm-src/glm/gtc/quaternion.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/ignore.h:
@@ -4046,7 +4667,11 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/steady_clock.h:
 
+_deps/glm-src/glm/vec2.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_integral.h:
+
+_deps/glm-src/glm/gtc/type_ptr.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_base_10.h:
 
@@ -4059,6 +4684,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit_reference:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/three_way_comp_ref_type.h:
+
+_deps/glm-src/glm/ext/vector_float1_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/wctype.h:
 
@@ -4091,6 +4718,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/partial_sort_copy.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cerrno:
+
+_deps/glm-src/glm/ext/vector_bool2.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_volatile.h:
 
@@ -4146,11 +4775,15 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_all_extents.h:
 
+_deps/glm-src/glm/ext/matrix_float2x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/unique.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/transform.h:
+
+_deps/glm-src/glm/ext/matrix_float3x3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/stable_sort.h:
 
@@ -4206,6 +4839,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/queue:
 
+_deps/glm-src/glm/glm.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/remove_if.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/math.h:
@@ -4244,6 +4879,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_def.h:
 
+_deps/glm-src/glm/ext/vector_bool4_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/min.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/exception:
@@ -4266,11 +4903,15 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/partition.h:
 
+_deps/glm-src/glm/detail/type_mat3x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/destruct_n.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/___wctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ctype.h:
+
+_deps/glm-src/glm/ext/quaternion_float_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__cstddef/byte.h:
 
@@ -4295,6 +4936,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ostream_iterator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/abi.h:
+
+_deps/glm-src/glm/detail/type_mat3x2.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/mismatch.h:
 
@@ -4332,6 +4975,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h:
 
+_deps/glm-src/glm/ext/matrix_float3x4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/generate_n.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/view_interface.h:
@@ -4345,6 +4990,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_valid_expansion.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/is_sorted.h:
+
+_deps/glm-src/glm/ext/vector_double4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/iterator_operations.h:
 
@@ -4382,6 +5029,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/special_functions.h:
 
+_deps/glm-src/glm/ext/matrix_double4x2_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/contention_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/segmented_iterator.h:
@@ -4389,6 +5038,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/climits:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/for_each.h:
+
+_deps/glm-src/glm/ext/vector_int1_sized.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__xlocale.h:
 
@@ -4399,6 +5050,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/binary_search.h:
+
+_deps/glm-src/glm/ext/vector_int1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/new:
 
@@ -4450,6 +5103,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_unsigned.h:
 
+_deps/glm-src/glm/gtc/matrix_transform.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/signal.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h:
@@ -4471,6 +5126,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/typeinfo:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_string.h:
+
+_deps/glm-src/glm/ext/vector_relational.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h:
 
@@ -4522,6 +5179,8 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2/SDL_surface.h:
 
+_deps/glm-src/glm/vec3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binder2nd.h:
@@ -4530,11 +5189,15 @@ CMakeFiles/Assignment1.dir/src/stb_image.cpp.o: /Volumes/MAC_KIOXIA/OpenGL1/src/
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_bounds.h:
 
+_deps/glm-src/glm/detail/type_vec4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/filesystem_error.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/streambuf.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_unsigned.h:
+
+_deps/glm-src/glm/ext/matrix_double2x2_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/weak_result_type.h:
 
