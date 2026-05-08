@@ -231,24 +231,26 @@ void OpenGLWindow::initGL()
 
     // model matrix
     glm::mat4 model_sun = glm::mat4(1.0f);
+    model_sun = glm::translate(model_sun, glm::vec3(0.0f, 0.0f, -15.0f));
+    model_sun = glm::scale(model_sun, glm::vec3(2.0f, 2.0f, 2.0f));
     ObjectData sun = drawObject(geometry, shader, model_sun, texture);
     objects.push_back(sun);
 
     glm::mat4 model_moon = glm::mat4(1.0f);
-    model_moon = glm::translate(model_moon, glm::vec3(3.0f, 2.0f, 0.0f));
+    model_moon = glm::translate(model_moon, glm::vec3(7.0f, 2.0f, -15.0f));
     model_moon = glm::scale(model_moon, glm::vec3(0.3f, 0.3f, 0.3f));
     ObjectData moon = drawObject(geometry, shader, model_moon, texture);
     objects.push_back(moon);
 
     glm::mat4 model_earth = glm::mat4(1.0f);
-    model_earth = glm::translate(model_earth, glm::vec3(2.0f, 1.0f, 0.0f));
+    model_earth = glm::translate(model_earth, glm::vec3(6.0f, 1.0f, -15.0f));
     model_earth = glm::scale(model_earth, glm::vec3(0.7f, 0.7f, 0.7f));
     ObjectData earth = drawObject(geometry, shader, model_earth, texture);
     objects.push_back(earth);
 
     // set up camera
     glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f));
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, 0.0f));
     
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
