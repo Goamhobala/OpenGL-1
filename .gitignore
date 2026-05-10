@@ -18,3 +18,4 @@ data/*
 build/
 opengl1
 cmake-build/
+*.tar
