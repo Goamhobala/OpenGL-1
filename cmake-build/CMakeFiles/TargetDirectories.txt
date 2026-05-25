@@ -1,8 +1,0 @@
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/CMakeFiles/Assignment1.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/CMakeFiles/edit_cache.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/CMakeFiles/rebuild_cache.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-build/CMakeFiles/edit_cache.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-build/CMakeFiles/rebuild_cache.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-build/glm/CMakeFiles/glm.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-build/glm/CMakeFiles/edit_cache.dir
-/Volumes/MAC_KIOXIA/OpenGL1/cmake-build/_deps/glm-build/glm/CMakeFiles/rebuild_cache.dir

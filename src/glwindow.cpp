@@ -6,8 +6,6 @@
 
 #include "glwindow.h"
 #include "geometry.h"
-#include "stb_image.h"
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -221,8 +219,9 @@ void OpenGLWindow::initGL()
 
 
     // set up camera
-    glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, 0.0f));
+    view = glm::lookAt(cameraPos,  cameraPos + cameraForward, cameraUp);
+    // glm::mat4 view = glm::mat4(1.0f);
+    // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f)); // move camera backwards
     
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
@@ -253,11 +252,12 @@ void OpenGLWindow::render(int timeElapsed)
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-    
+    GLuint viewLoc = glGetUniformLocation(shader, "view");
+    view = glm::lookAt(cameraPos, cameraPos + cameraForward, cameraUp);
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 
     // Sun stationary
-    glm::mat4 sun_pivot = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -15.0f));
+    glm::mat4 sun_pivot = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
     objects[0].model = glm::scale(sun_pivot, glm::vec3(2.0f, 2.0f, 2.0f));
 
     // Earth accumulate angle so speed changes don't cause jumps
@@ -295,7 +295,9 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
     // Note that SDL provides both Scancodes (which correspond to physical positions on the keyboard)
     // and Keycodes (which correspond to symbols on the keyboard, and might differ across layouts)
     if(e.type == SDL_KEYDOWN)
-    {
+    {   
+
+        
         if(e.key.keysym.sym == SDLK_ESCAPE)
         {
             return false;
@@ -323,6 +325,20 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
         else if(e.key.keysym.sym == SDLK_RIGHT)
         {
             beta -= 0.1f;
+        }
+
+       
+        if (e.key.keysym.sym == SDLK_w){
+            cameraPos += cameraForward * cameraSpeed;
+        }
+        else if (e.key.keysym.sym == SDLK_s){
+            cameraPos -= cameraForward * cameraSpeed;
+        }
+        else if (e.key.keysym.sym == SDLK_a){
+            cameraPos -= glm::normalize(glm::cross(cameraUp, cameraForward)) * cameraSpeed;
+        }
+        else if (e.key.keysym.sym == SDLK_d){
+            cameraPos += glm::normalize(glm::cross(cameraUp, cameraForward)) * cameraSpeed;
         }
     }
     return true;

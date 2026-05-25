@@ -42,6 +42,13 @@ private:
     int start = 1;
     float alpha = 1.0f;
     float beta = 1.0f;
+
+
+    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 15.0f);
+    glm::vec3 cameraForward = glm::vec3(0.0f, 0.0f, -1.0f);
+    float cameraSpeed = 1.0f;
+    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+    glm::mat4 view;
 };
 
 #endif
