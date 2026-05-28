@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "stb_image.h"
 
 using namespace std;
 
@@ -101,11 +102,34 @@ glm::vec4 rgbMap(glm::vec4 color) {
     return color;
 }
 
-ObjectData createObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, const glm::vec4& colour){
+ObjectData createObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, const glm::vec4& colour=glm::vec4(255.0f, 255.0f, 255.0f, 255.0f), const char* texturePath=nullptr){
     // draw a single object and return the object data
     ObjectData obj;
 
+    // Texture
+    if (texturePath != nullptr) {
+        GLuint texture = 0;
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
         
+        int width, height, nrChannels;
+        unsigned char *data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
+
+        if (data){
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            glGenerateMipmap(GL_TEXTURE_2D);
+        } 
+
+        stbi_image_free(data);
+    }
+
+
     GLuint vao = 0;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -190,29 +214,10 @@ void OpenGLWindow::initGL()
     geometry.loadFromOBJFile("../res/sphere-fixed.txt");
 
 
-    // GLuint texture = 0;
-    // glGenTextures(1, &texture);
-    // glBindTexture(GL_TEXTURE_2D, texture);
 
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-
-    // int width, height, nrChannels;
-    // unsigned char *data = stbi_load("../res/sun_diffuse0.jpg", &width, &height, &nrChannels, 0);
-
-    // if (data){
-    //     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    //     glGenerateMipmap(GL_TEXTURE_2D);
-    // } 
-    
-    // stbi_image_free(data);
-
-    ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f));
-    ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f));
-    ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f));
+    ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg");
+    ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f), "../res/earth_diffuse.jpg");
+    ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f), "../res/moon_diffuse.jpg");
     objects.push_back(sun);
     objects.push_back(earth);
     objects.push_back(moon);
@@ -351,4 +356,9 @@ void OpenGLWindow::cleanup()
         glDeleteBuffers(1, &obj.vertexBuffer);
     }
     SDL_DestroyWindow(sdlWin);
+}
+
+void OpenGLWindow::setCameraSpeed(float speed)
+{
+    cameraSpeed = speed;
 }

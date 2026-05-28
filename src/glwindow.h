@@ -10,7 +10,7 @@
 struct ObjectData
 {
     GLuint vao; // this stores the vertex attributes pointer
-    // GLuint textureID;
+    GLuint textureID;
     // Used only for cleanup
     GLuint textureBuffer;
     GLuint vertexBuffer;
@@ -28,6 +28,7 @@ public:
     void render(int timeElapsed);
     bool handleEvent(SDL_Event e);
     void cleanup();
+    void setCameraSpeed(float speed);
 
 private:
     SDL_Window* sdlWin;

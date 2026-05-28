@@ -16,8 +16,18 @@ int main(int argc, char* argv[])
 
     bool running = true;
     int now = SDL_GetTicks();
+
+    // for camera update
+    float deltaTime = 0.0f;
+    float lastFrame = 0.0f;
+
     while(running)
     {   
+        // Calculate delta time
+        float currentFrame = SDL_GetTicks() / 1000.0f; // sdl returns ms, convert to seconds
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+        window.setCameraSpeed(10.0f * deltaTime);
 
         // Check for a quit event before passing to the GLWindow
         SDL_Event e;
