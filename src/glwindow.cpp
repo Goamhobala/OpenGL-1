@@ -248,6 +248,11 @@ void OpenGLWindow::initGL()
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
+
+    // set up lighting
+    glm::vec3 lightColor = glm::vec3(1.0, 0.95, 0.8);
+    glUniform3fv(glGetUniformLocation(shader, "lightColour"), 1, glm::value_ptr(lightColor));
+
     glPrintError("Setup complete", true);
 }
 
