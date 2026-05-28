@@ -24,10 +24,10 @@ int main(int argc, char* argv[])
     while(running)
     {   
         // Calculate delta time
-        float currentFrame = SDL_GetTicks() / 1000.0f; // sdl returns ms, convert to seconds
+        float currentFrame = SDL_GetTicks(); // sdl returns ms, convert to seconds
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
-        window.setCameraSpeed(10.0f * deltaTime);
+        window.setCameraSpeed(1.0f * deltaTime);
 
         // Check for a quit event before passing to the GLWindow
         SDL_Event e;

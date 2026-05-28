@@ -106,6 +106,10 @@ ObjectData createObject(const GeometryData& geometry, const GLuint& shader, cons
     // draw a single object and return the object data
     ObjectData obj;
 
+    GLuint vao = 0;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
     // Texture
     if (texturePath != nullptr) {
         GLuint texture = 0;
@@ -117,22 +121,24 @@ ObjectData createObject(const GeometryData& geometry, const GLuint& shader, cons
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        
         int width, height, nrChannels;
         unsigned char *data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
 
         if (data){
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
-        } 
+            obj.textureID = texture;
+            int texLoc = glGetAttribLocation(shader, "TexCoord");
+            GLuint texBuffer = 0;
+            glGenBuffers(1, &texBuffer);
+            glBindBuffer(GL_ARRAY_BUFFER, texBuffer);
+            glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
+            glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
+            glEnableVertexAttribArray(texLoc);
+        }
 
         stbi_image_free(data);
     }
-
-
-    GLuint vao = 0;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
 
 
     int vertexLoc = glGetAttribLocation(shader, "position");
@@ -171,7 +177,7 @@ void OpenGLWindow::initGL()
 
     sdlWin = SDL_CreateWindow("OpenGL Prac 1",
                               SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              640, 480, SDL_WINDOW_OPENGL);
+                              640, 640, SDL_WINDOW_OPENGL);
     if(!sdlWin)
     {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Error", "Unable to create window", 0);
@@ -216,20 +222,22 @@ void OpenGLWindow::initGL()
 
 
     ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg");
-    ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f), "../res/earth_diffuse.jpg");
-    ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f), "../res/moon_diffuse.jpg");
+    ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f), "../res/earth_diffuse.png");
+    ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f), "../res/moon_diffuse.png");
     objects.push_back(sun);
     objects.push_back(earth);
     objects.push_back(moon);
 
 
     // set up camera
-    view = glm::lookAt(cameraPos,  cameraPos + cameraForward, cameraUp);
+    view = glm::lookAt(cameraPos, glm::vec3(0.0f), cameraUp);
     // glm::mat4 view = glm::mat4(1.0f);
     // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f)); // move camera backwards
     
+    
     glm::mat4 projection = glm::mat4(1.0f);
-    projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+    // projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+    projection = glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, -30.0f, 30.0f);
     
     GLuint viewLoc = 0;
     GLuint projectionLoc = 0;
@@ -258,7 +266,18 @@ void OpenGLWindow::render(int timeElapsed)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     GLuint viewLoc = glGetUniformLocation(shader, "view");
-    view = glm::lookAt(cameraPos, cameraPos + cameraForward, cameraUp);
+    
+    glm::mat4 cameraR = glm::mat4(1.0f);
+    cameraR = glm::rotate(cameraR, glm::radians(pitch), glm::vec3(1.0f, 0.0f, 0.0f));
+    cameraR = glm::rotate(cameraR, glm::radians(yaw), glm::vec3(0.0f, 1.0f, 0.0f));
+    cameraR = glm::rotate(cameraR, glm::radians(roll), glm::vec3(0.0f, 0.0f, 1.0f));
+
+    glm::vec3 rotatedEye = cameraR * glm::vec4(cameraPos, 1.0f);
+    glm::vec3 rotatedUp = cameraR * glm::vec4(cameraUp, 1.0f);
+
+    view = glm::lookAt(rotatedEye, glm::vec3(0.0f), rotatedUp);
+
+
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 
     // Sun stationary
@@ -284,6 +303,12 @@ void OpenGLWindow::render(int timeElapsed)
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(obj.model));
         GLuint colourLoc = glGetUniformLocation(shader, "colour");
         glUniform4fv(colourLoc, 1, glm::value_ptr(obj.colour));
+
+        GLuint textureLoc = glGetUniformLocation(shader, "TexCoord");
+        glActiveTexture(GL_TEXTURE0);                          // activate unit 0
+        glBindTexture(GL_TEXTURE_2D, obj.textureID);           // bind texture to unit 0
+        glUniform1i(glGetUniformLocation(shader, "ourTexture"), 0);
+
         glBindVertexArray(obj.vao);
         glDrawArrays(GL_TRIANGLES, 0, obj.vertexCount);
     }
@@ -333,17 +358,30 @@ bool OpenGLWindow::handleEvent(SDL_Event e)
         }
 
        
-        if (e.key.keysym.sym == SDLK_w){
-            cameraPos += cameraForward * cameraSpeed;
-        }
-        else if (e.key.keysym.sym == SDLK_s){
-            cameraPos -= cameraForward * cameraSpeed;
-        }
-        else if (e.key.keysym.sym == SDLK_a){
-            cameraPos -= glm::normalize(glm::cross(cameraUp, cameraForward)) * cameraSpeed;
+        if (e.key.keysym.sym == SDLK_a){
+            // cameraPos += yaw * cameraSpeed;
+            yaw += cameraSpeed;
         }
         else if (e.key.keysym.sym == SDLK_d){
-            cameraPos += glm::normalize(glm::cross(cameraUp, cameraForward)) * cameraSpeed;
+            // cameraPos -= yaw * cameraSpeed;
+            yaw -= cameraSpeed;
+        }
+        else if (e.key.keysym.sym == SDLK_w){
+            // cameraPos -= glm::normalize(glm::cross(cameraUp, cameraForward)) * cameraSpeed;
+            pitch += cameraSpeed;
+        }
+        else if (e.key.keysym.sym == SDLK_s){
+            // cameraPos -= pitch * cameraSpeed;
+            pitch -= cameraSpeed;
+        }
+
+        else if (e.key.keysym.sym == SDLK_q){
+            // cameraPos += cameraUp * cameraSpeed;
+            roll += cameraSpeed;
+        }
+        else if (e.key.keysym.sym == SDLK_e){
+            // cameraPos -= cameraUp * cameraSpeed;
+            roll -= cameraSpeed;
         }
     }
     return true;
