@@ -1,5 +1,7 @@
 This assignment involves using OpenGL to create a simple Sun-Earth-Moon systemm
-whereby they revovle around each other at different speed and angles. Each planet will have its own texture. The lighting effects are implemented using the Phong Model
+whereby they revovle around each other at different speed and angles. Each planet will have its own texture. The lighting effects are implemented using the Phong Model.
+
+Notably, for the second, moving light source, I added a [brown dwrarf](https://en.wikipedia.org/wiki/Brown_dwarf), which is a kind of self-luminous object that failed to become a star. Here I simply treated it as an additional planet in the solar system that rotates around the Sun. It is not physically correct, but I made it followed the same orbit as Jupyter, and placed it directly across it, acting as Jupyter's evil twin.
 
 ## Setup
 
@@ -17,6 +19,8 @@ make
 ## Extension
 
 For extension, I implemented the first category: `Additional planets with textures, and better scaling to separate out the planets. In this case, a fixed rotation speed for each planet could be used.`
+
+Additionally, I added a brown dwarf (a failed star) to our solar system, acting as a second light source rotating around the Sun. In reality, the physical orbits should change, but here I just treated it as an additional planet.
 
 I downloaded the [planet textures](https://www.solarsystemscope.com/textures/) from the link provided, and completed our solar systems with all 9 major planets, in the correct order. Note that the scalings are optimised for visual effects rather than pysical accuracy, which would make the smaller planets too small to be visible.
 

@@ -19,6 +19,7 @@ struct ObjectData
     float angle = 0.0f;
     float orbitRadius = 0.0f;
     float orbitSpeed = 0.0f;
+    float scale = 1.0f;
 };
 
 class OpenGLWindow

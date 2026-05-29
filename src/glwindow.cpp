@@ -253,71 +253,89 @@ void OpenGLWindow::initGL()
 
     // [0] Sun
     ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 200.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg", true);
+    sun.scale = 3.0f;
 
     // [1] Mercury
     ObjectData mercury = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(180.0f, 180.0f, 180.0f, 255.0f), "../res/mercury.jpg");
     mercury.angle = 0.0f;
     mercury.orbitRadius = 4.0f;
     mercury.orbitSpeed = 2.0f;
+    mercury.scale = 0.4f;
 
     // [2] Venus
     ObjectData venus = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(220.0f, 180.0f, 100.0f, 255.0f), "../res/venus.jpg");
     venus.angle = M_PI / 3.0f;
     venus.orbitRadius = 7.0f;
     venus.orbitSpeed = 1.3f;
+    venus.scale = 1.0f;
 
     // [3] Earth
     ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f), "../res/earth_diffuse.png");
     earth.angle = M_PI;
     earth.orbitRadius = 10.0f;
     earth.orbitSpeed = 0.8f;
+    earth.scale = 1.0f;
 
     // [4] Moon
     ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(200.0f, 200.0f, 200.0f, 255.0f), "../res/moon_diffuse.png");
     moon.angle = 3.0f * M_PI / 2.0f;
     moon.orbitRadius = 1.5f;
     moon.orbitSpeed = 3.0f;
+    moon.scale = 0.15f;
 
     // [5] Mars
     ObjectData mars = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(200.0f, 80.0f, 50.0f, 255.0f), "../res/mars.jpg");
     mars.angle = M_PI / 2.0f;
     mars.orbitRadius = 13.0f;
     mars.orbitSpeed = 0.5f;
+    mars.scale = 0.9f;
 
     // [6] Jupiter
     ObjectData jupiter = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(200.0f, 150.0f, 100.0f, 255.0f), "../res/jupyter.jpg");
     jupiter.angle = M_PI;
     jupiter.orbitRadius = 17.0f;
     jupiter.orbitSpeed = 0.25f;
+    jupiter.scale = 1.8f;
 
     // [7] Saturn
     ObjectData saturn = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(210.0f, 180.0f, 130.0f, 255.0f), "../res/saturn.jpg");
     saturn.angle = 3.0f * M_PI / 4.0f;
     saturn.orbitRadius = 21.0f;
     saturn.orbitSpeed = 0.15f;
+    saturn.scale = 1.5f;
 
     // [8] Uranus
     ObjectData uranus = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(150.0f, 220.0f, 230.0f, 255.0f), "../res/uranus.jpg");
     uranus.angle = M_PI / 4.0f;
     uranus.orbitRadius = 25.0f;
     uranus.orbitSpeed = 0.1f;
+    uranus.scale = 1.2f;
 
     // [9] Neptune
     ObjectData neptune = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(60.0f, 80.0f, 200.0f, 255.0f), "../res/neptune.jpg");
     neptune.angle = 5.0f * M_PI / 4.0f;
     neptune.orbitRadius = 29.0f;
     neptune.orbitSpeed = 0.07f;
+    neptune.scale = 1.2f;
 
-    objects.push_back(sun);      // [0]
-    objects.push_back(mercury);  // [1]
-    objects.push_back(venus);    // [2]
-    objects.push_back(earth);    // [3]
-    objects.push_back(moon);     // [4]
-    objects.push_back(mars);     // [5]
-    objects.push_back(jupiter);  // [6]
-    objects.push_back(saturn);   // [7]
-    objects.push_back(uranus);   // [8]
-    objects.push_back(neptune);  // [9]
+    // [10] Brown Dwarf 
+    ObjectData brownDwarf = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(120.0f, 60.0f, 20.0f, 255.0f), "../res/brown_dwarf.jpg", true);
+    brownDwarf.angle = 0.0f;
+    brownDwarf.orbitRadius = 17.0f;
+    brownDwarf.orbitSpeed = 0.25f;
+    brownDwarf.scale = 1.8f;
+
+    objects.push_back(sun);        // [0]
+    objects.push_back(mercury);    // [1]
+    objects.push_back(venus);      // [2]
+    objects.push_back(earth);      // [3]
+    objects.push_back(moon);       // [4]
+    objects.push_back(mars);       // [5]
+    objects.push_back(jupiter);    // [6]
+    objects.push_back(saturn);     // [7]
+    objects.push_back(uranus);     // [8]
+    objects.push_back(neptune);    // [9]
+    objects.push_back(brownDwarf); // [10]
 
 
     // set up camera
@@ -386,35 +404,37 @@ void OpenGLWindow::render(int timeElapsed)
     glUniform3fv(eyeDirectionLoc, 1, glm::value_ptr(rotatedEye));
 
     glm::mat4 sun_frame = glm::mat4(1.0f);
-    objects[0].model = glm::scale(sun_frame, glm::vec3(3.0f, 3.0f, 3.0f));
+    objects[0].model = glm::scale(sun_frame, glm::vec3(objects[0].scale));
 
     glm::mat4 mercury_frame = orbitFrame(sun_frame, objects[1], alpha, dt);
-    objects[1].model = glm::scale(mercury_frame, glm::vec3(0.4f, 0.4f, 0.4f));
+    objects[1].model = glm::scale(mercury_frame, glm::vec3(objects[1].scale));
 
     glm::mat4 venus_frame = orbitFrame(sun_frame, objects[2], alpha, dt);
-    objects[2].model = glm::scale(venus_frame, glm::vec3(1.0f, 1.0f, 1.0f));
+    objects[2].model = glm::scale(venus_frame, glm::vec3(objects[2].scale));
 
     glm::mat4 earth_frame = orbitFrame(sun_frame, objects[3], alpha, dt);
-    objects[3].model = glm::scale(earth_frame, glm::vec3(1.0f, 1.0f, 1.0f));
+    objects[3].model = glm::scale(earth_frame, glm::vec3(objects[3].scale));
 
     glm::mat4 moon_frame = orbitFrame(earth_frame, objects[4], beta, dt);
-    objects[4].model = glm::scale(moon_frame, glm::vec3(0.15f, 0.15f, 0.15f));
+    objects[4].model = glm::scale(moon_frame, glm::vec3(objects[4].scale));
 
     glm::mat4 mars_frame = orbitFrame(sun_frame, objects[5], alpha, dt);
-    objects[5].model = glm::scale(mars_frame, glm::vec3(0.9f, 0.9f, 0.9f));
+    objects[5].model = glm::scale(mars_frame, glm::vec3(objects[5].scale));
 
     glm::mat4 jupiter_frame = orbitFrame(sun_frame, objects[6], alpha, dt);
-    objects[6].model = glm::scale(jupiter_frame, glm::vec3(1.8f, 1.8f, 1.8f));
+    objects[6].model = glm::scale(jupiter_frame, glm::vec3(objects[6].scale));
 
     glm::mat4 saturn_frame = orbitFrame(sun_frame, objects[7], alpha, dt);
-    objects[7].model = glm::scale(saturn_frame, glm::vec3(1.5f, 1.5f, 1.5f));
+    objects[7].model = glm::scale(saturn_frame, glm::vec3(objects[7].scale));
 
     glm::mat4 uranus_frame = orbitFrame(sun_frame, objects[8], alpha, dt);
-    objects[8].model = glm::scale(uranus_frame, glm::vec3(1.2f, 1.2f, 1.2f));
+    objects[8].model = glm::scale(uranus_frame, glm::vec3(objects[8].scale));
 
     glm::mat4 neptune_frame = orbitFrame(sun_frame, objects[9], alpha, dt);
-    objects[9].model = glm::scale(neptune_frame, glm::vec3(1.2f, 1.2f, 1.2f));
+    objects[9].model = glm::scale(neptune_frame, glm::vec3(objects[9].scale));
 
+    glm::mat4 brownDwarf_frame = orbitFrame(sun_frame, objects[10], alpha, dt);
+    objects[10].model = glm::scale(brownDwarf_frame, glm::vec3(objects[10].scale));
 
     for (const ObjectData& obj : objects) {
         GLuint modelLoc = glGetUniformLocation(shader, "model");
