@@ -383,7 +383,7 @@ void OpenGLWindow::render(int timeElapsed)
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 
     GLuint eyeDirectionLoc = glGetUniformLocation(shader, "eyeDirection");
-    glUniform3fv(eyeDirectionLoc, 1, glm::value_ptr(-rotatedEye));
+    glUniform3fv(eyeDirectionLoc, 1, glm::value_ptr(rotatedEye));
 
     glm::mat4 sun_frame = glm::mat4(1.0f);
     objects[0].model = glm::scale(sun_frame, glm::vec3(3.0f, 3.0f, 3.0f));
