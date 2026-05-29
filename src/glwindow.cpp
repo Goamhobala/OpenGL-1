@@ -13,6 +13,15 @@
 
 using namespace std;
 
+// Advances obj.angle by orbitSpeed * multiplier * dt, then returns the
+// orbital frame: parent rotated by the new angle, translated out by orbitRadius.
+static glm::mat4 orbitFrame(const glm::mat4& parent, ObjectData& obj, float multiplier, float dt)
+{
+    obj.angle += obj.orbitSpeed * multiplier * dt;
+    glm::mat4 frame = glm::rotate(parent, obj.angle, glm::vec3(0.0f, 0.0f, 1.0f));
+    return glm::translate(frame, glm::vec3(obj.orbitRadius, 0.0f, 0.0f));
+}
+
 const char* glGetErrorString(GLenum error)
 {
     switch(error)
@@ -124,7 +133,8 @@ ObjectData createObject(const GeometryData& geometry, const GLuint& shader, cons
         int width, height, nrChannels;
         unsigned char *data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
         if (data) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+            glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
             obj.textureID = texture;
         }
@@ -242,22 +252,41 @@ void OpenGLWindow::initGL()
 
 
     ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg", true);
+
     ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f), "../res/earth_diffuse.png");
+    earth.angle = M_PI;
+    earth.orbitRadius = 5.0f;
+    earth.orbitSpeed = 0.5f;
+
     ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f), "../res/moon_diffuse.png");
+    moon.angle = 3.0f * M_PI / 2.0f;
+    moon.orbitRadius = 1.2f;
+    moon.orbitSpeed = 1.0f;
+
+    // Extension 1: the 7 planets of the solar system
+    ObjectData jupyter = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 255.0f, 0.0f, 255.0f), "../res/jupyter.jpg");
+    jupyter.angle = M_PI;
+    jupyter.orbitRadius = 12.0f;
+    jupyter.orbitSpeed = 0.5f;
+
     objects.push_back(sun);
     objects.push_back(earth);
     objects.push_back(moon);
+    objects.push_back(jupyter);
 
 
     // set up camera
     view = glm::lookAt(cameraPos, glm::vec3(0.0f), cameraUp);
+
+    // GLuint eyeDirectionLoc = glGetUniformLocation(shader, "eyeDirection");
+    // glUniform3fv(eyeDirectionLoc, 1, glm::value_ptr(-cameraPos));
     // glm::mat4 view = glm::mat4(1.0f);
     // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f)); // move camera backwards
     
     
     glm::mat4 projection = glm::mat4(1.0f);
     // projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-    projection = glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, -30.0f, 30.0f);
+    projection = glm::ortho(-15.0f, 15.0f, -15.0f, 15.0f, -30.0f, 30.0f);
     
     GLuint viewLoc = 0;
     GLuint projectionLoc = 0;
@@ -272,6 +301,9 @@ void OpenGLWindow::initGL()
     // set up lighting
     glm::vec3 lightColor = glm::vec3(1.0, 0.95, 0.8);
     glUniform3fv(glGetUniformLocation(shader, "lightColour"), 1, glm::value_ptr(lightColor));
+
+    // the light position is always in the centre
+    glUniform3fv(glGetUniformLocation(shader, "lightPos"), 1, glm::value_ptr(glm::vec3(0.0f, 0.0f, 0.0f)));
 
     glPrintError("Setup complete", true);
 }
@@ -305,22 +337,20 @@ void OpenGLWindow::render(int timeElapsed)
 
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 
-    // Sun stationary
-    glm::mat4 sun_pivot = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-    objects[0].model = glm::scale(sun_pivot, glm::vec3(2.0f, 2.0f, 2.0f));
+    GLuint eyeDirectionLoc = glGetUniformLocation(shader, "eyeDirection");
+    glUniform3fv(eyeDirectionLoc, 1, glm::value_ptr(-rotatedEye));
 
-    // Earth accumulate angle so speed changes don't cause jumps
-    earthAngle += 0.5f * alpha * dt ;
-    float earth_radius = 5.0f;
-    glm::mat4 earth_pivot = glm::translate(sun_pivot, glm::vec3(earth_radius * cos(earthAngle), earth_radius * sin(earthAngle), 0.0f));
-    objects[1].model = glm::scale(earth_pivot, glm::vec3(0.7f, 0.7f, 0.7f));
+    glm::mat4 sun_frame = glm::mat4(1.0f);
+    objects[0].model = glm::scale(sun_frame, glm::vec3(2.0f, 2.0f, 2.0f));
 
-    // Moon accumulate angle, orbit relative to unscaled earth_pivot
-    moonAngle += 1.0f * beta * dt;
-    float moon_radius = 1.2f;
-    glm::mat4 moon_pivot = glm::translate(earth_pivot, glm::vec3(moon_radius * cos(moonAngle), moon_radius * sin(moonAngle), 0.0f));
-    objects[2].model = glm::scale(moon_pivot, glm::vec3(0.3f, 0.3f, 0.3f));
+    glm::mat4 earth_frame = orbitFrame(sun_frame, objects[1], alpha, dt);
+    objects[1].model = glm::scale(earth_frame, glm::vec3(0.7f, 0.7f, 0.7f));
 
+    glm::mat4 moon_frame = orbitFrame(earth_frame, objects[2], beta, dt);
+    objects[2].model = glm::scale(moon_frame, glm::vec3(0.3f, 0.3f, 0.3f));
+
+    glm::mat4 jupyter_frame = orbitFrame(sun_frame, objects[3], alpha, dt);
+    objects[3].model = glm::scale(jupyter_frame, glm::vec3(1.0f, 1.0f, 1.0f));
 
 
     for (const ObjectData& obj : objects) {

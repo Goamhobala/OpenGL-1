@@ -16,6 +16,9 @@ struct ObjectData
     glm::mat4 model;
     glm::vec4 colour;
     bool isEmissive;
+    float angle = 0.0f;
+    float orbitRadius = 0.0f;
+    float orbitSpeed = 0.0f;
 };
 
 class OpenGLWindow
@@ -35,8 +38,6 @@ private:
     // GLuint vao;
     GLuint shader;
     float totalTime = 0.0f;
-    float earthAngle = M_PI;
-    float moonAngle = 3.0f * M_PI / 2.0f;
     std::vector<ObjectData> objects;
 
     int start = 1;
