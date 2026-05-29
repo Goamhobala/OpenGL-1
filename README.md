@@ -1,7 +1,11 @@
 This assignment involves using OpenGL to create a simple Sun-Earth-Moon systemm
 whereby they revovle around each other at different speed and angles. Each planet will have its own texture. The lighting effects are implemented using the Phong Model.
 
+## Moving Light source
+
 Notably, for the second, moving light source, I added a [brown dwrarf](https://en.wikipedia.org/wiki/Brown_dwarf), which is a kind of self-luminous object that failed to become a star. Here I simply treated it as an additional planet in the solar system that rotates around the Sun. It is not physically correct, but I made it followed the same orbit as Jupyter, and placed it directly across it, acting as Jupyter's evil twin.
+
+The brown dwraf emits a pink light. To make the effect more obvious, I have made the brown dwarf's and Jupiter's angular velocities 5 times greater than the rest of the planets.
 
 ## Setup
 

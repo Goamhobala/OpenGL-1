@@ -255,6 +255,15 @@ void OpenGLWindow::initGL()
     ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 200.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg", true);
     sun.scale = 3.0f;
 
+    // set up sun lighting
+    glm::vec3 lightColor = glm::vec3(rgbMap(glm::vec4(255.0f, 245.0f, 48.0f, 255.0f)));
+    glUniform3fv(glGetUniformLocation(shader, "lightColour"), 1, glm::value_ptr(lightColor));
+    // the sun light position is always in the centre
+    glUniform3fv(glGetUniformLocation(shader, "lightPos"), 1, glm::value_ptr(glm::vec3(0.0f, 0.0f, 0.0f)));
+
+
+
+
     // [1] Mercury
     ObjectData mercury = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(180.0f, 180.0f, 180.0f, 255.0f), "../res/mercury.jpg");
     mercury.angle = 0.0f;
@@ -324,6 +333,10 @@ void OpenGLWindow::initGL()
     brownDwarf.orbitRadius = 17.0f;
     brownDwarf.orbitSpeed = 0.25f;
     brownDwarf.scale = 1.8f;
+        // setup lighting for brown dwarf
+    glm::vec3 lightColour2 = glm::vec3(rgbMap(glm::vec4(252.0f, 0.0f, 242.0f, 255.0f)));
+    glUniform3fv(glGetUniformLocation(shader, "lightColour2"), 1, glm::value_ptr(lightColour2));
+
 
     objects.push_back(sun);        // [0]
     objects.push_back(mercury);    // [1]
@@ -361,12 +374,6 @@ void OpenGLWindow::initGL()
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 
-    // set up lighting
-    glm::vec3 lightColor = glm::vec3(1.0, 0.95, 0.8);
-    glUniform3fv(glGetUniformLocation(shader, "lightColour"), 1, glm::value_ptr(lightColor));
-
-    // the light position is always in the centre
-    glUniform3fv(glGetUniformLocation(shader, "lightPos"), 1, glm::value_ptr(glm::vec3(0.0f, 0.0f, 0.0f)));
 
     glPrintError("Setup complete", true);
 }
@@ -421,7 +428,7 @@ void OpenGLWindow::render(int timeElapsed)
     glm::mat4 mars_frame = orbitFrame(sun_frame, objects[5], alpha, dt);
     objects[5].model = glm::scale(mars_frame, glm::vec3(objects[5].scale));
 
-    glm::mat4 jupiter_frame = orbitFrame(sun_frame, objects[6], alpha, dt);
+    glm::mat4 jupiter_frame = orbitFrame(sun_frame, objects[6], alpha * 5, dt);
     objects[6].model = glm::scale(jupiter_frame, glm::vec3(objects[6].scale));
 
     glm::mat4 saturn_frame = orbitFrame(sun_frame, objects[7], alpha, dt);
@@ -433,8 +440,12 @@ void OpenGLWindow::render(int timeElapsed)
     glm::mat4 neptune_frame = orbitFrame(sun_frame, objects[9], alpha, dt);
     objects[9].model = glm::scale(neptune_frame, glm::vec3(objects[9].scale));
 
-    glm::mat4 brownDwarf_frame = orbitFrame(sun_frame, objects[10], alpha, dt);
+    glm::mat4 brownDwarf_frame = orbitFrame(sun_frame, objects[10], alpha * 5, dt);
     objects[10].model = glm::scale(brownDwarf_frame, glm::vec3(objects[10].scale));
+
+    // the brown dwarf lighting object position follows the brown dwarf object
+    glUniform3fv(glGetUniformLocation(shader, "lightPos2"), 1, glm::value_ptr(brownDwarf_frame[3]));
+
 
     for (const ObjectData& obj : objects) {
         GLuint modelLoc = glGetUniformLocation(shader, "model");
