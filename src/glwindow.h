@@ -11,12 +11,11 @@ struct ObjectData
 {
     GLuint vao; // this stores the vertex attributes pointer
     GLuint textureID;
-    // Used only for cleanup
-    GLuint textureBuffer;
     GLuint vertexBuffer;
     int vertexCount;
     glm::mat4 model;
     glm::vec4 colour;
+    bool isEmissive;
 };
 
 class OpenGLWindow

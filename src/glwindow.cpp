@@ -102,15 +102,15 @@ glm::vec4 rgbMap(glm::vec4 color) {
     return color;
 }
 
-ObjectData createObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, const glm::vec4& colour=glm::vec4(255.0f, 255.0f, 255.0f, 255.0f), const char* texturePath=nullptr){
-    // draw a single object and return the object data
+ObjectData createObject(const GeometryData& geometry, const GLuint& shader, const glm::mat4& modelMatrix, const glm::vec4& colour=glm::vec4(255.0f, 255.0f, 255.0f, 255.0f), const char* texturePath=nullptr, bool isEmissive=false){
     ObjectData obj;
+    obj.isEmissive = isEmissive;
+
 
     GLuint vao = 0;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
-    // Texture
     if (texturePath != nullptr) {
         GLuint texture = 0;
         glGenTextures(1, &texture);
@@ -123,34 +123,54 @@ ObjectData createObject(const GeometryData& geometry, const GLuint& shader, cons
 
         int width, height, nrChannels;
         unsigned char *data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
-
-        if (data){
+        if (data) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
             obj.textureID = texture;
-            int texLoc = glGetAttribLocation(shader, "TexCoord");
-            GLuint texBuffer = 0;
-            glGenBuffers(1, &texBuffer);
-            glBindBuffer(GL_ARRAY_BUFFER, texBuffer);
-            glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 2 * sizeof(float), geometry.textureCoordData(), GL_STATIC_DRAW);
-            glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, 0, 0);
-            glEnableVertexAttribArray(texLoc);
         }
-
         stbi_image_free(data);
     }
 
+    // build interleaved buffer: [pos.xyz, normal.xyz, texcoord.uv] = 8 floats/vertex
+    const int count = geometry.vertexCount();
+    const float* verts = (const float*)geometry.vertexData();
+    const float* norms = (const float*)geometry.normalData();
+    const float* texs  = (const float*)geometry.textureCoordData();
 
-    int vertexLoc = glGetAttribLocation(shader, "position");
+    std::vector<float> interleaved;
+    interleaved.reserve(count * 8);
+    for (int i = 0; i < count; i++) {
+        interleaved.push_back(verts[i*3+0]);
+        interleaved.push_back(verts[i*3+1]);
+        interleaved.push_back(verts[i*3+2]);
+        interleaved.push_back(norms[i*3+0]);
+        interleaved.push_back(norms[i*3+1]);
+        interleaved.push_back(norms[i*3+2]);
+        interleaved.push_back(texs[i*2+0]);
+        interleaved.push_back(texs[i*2+1]);
+    }
+
     GLuint vertexBuffer = 0;
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, geometry.vertexCount() * 3 * sizeof(float), geometry.vertexData(), GL_STATIC_DRAW);
-    glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, false, 0, 0);
-    glEnableVertexAttribArray(vertexLoc);
+    glBufferData(GL_ARRAY_BUFFER, count * 8 * sizeof(float), interleaved.data(), GL_STATIC_DRAW);
+
+    const GLsizei stride = 8 * sizeof(float);
+    int posLoc = glGetAttribLocation(shader, "position");
+    // the vbo starts from position, then normal, and then TexCoord
+    glVertexAttribPointer(posLoc, 3, GL_FLOAT, false, stride, (void*)0);
+    glEnableVertexAttribArray(posLoc);
+
+    int normLoc = glGetAttribLocation(shader, "normal");
+    glVertexAttribPointer(normLoc, 3, GL_FLOAT, false, stride, (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(normLoc);
+
+    int texLoc = glGetAttribLocation(shader, "TexCoord");
+    glVertexAttribPointer(texLoc, 2, GL_FLOAT, false, stride, (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(texLoc);
 
     obj.vao = vao;
-    obj.vertexCount = geometry.vertexCount();
+    obj.vertexCount = count;
     obj.colour = rgbMap(colour);
     obj.vertexBuffer = vertexBuffer;
     return obj;
@@ -221,7 +241,7 @@ void OpenGLWindow::initGL()
 
 
 
-    ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg");
+    ObjectData sun = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(255.0f, 0.0f, 0.0f, 255.0f), "../res/sun_diffuse0.jpg", true);
     ObjectData earth = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 255.0f, 0.0f, 255.0f), "../res/earth_diffuse.png");
     ObjectData moon = createObject(geometry, shader, glm::mat4(1.0f), glm::vec4(0.0f, 0.0f, 255.0f, 255.0f), "../res/moon_diffuse.png");
     objects.push_back(sun);
@@ -308,6 +328,8 @@ void OpenGLWindow::render(int timeElapsed)
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(obj.model));
         GLuint colourLoc = glGetUniformLocation(shader, "colour");
         glUniform4fv(colourLoc, 1, glm::value_ptr(obj.colour));
+        // is the object an light source?
+        glUniform1i(glGetUniformLocation(shader, "isEmissive"), obj.isEmissive);
 
         GLuint textureLoc = glGetUniformLocation(shader, "TexCoord");
         glActiveTexture(GL_TEXTURE0);                          // activate unit 0
