@@ -3,7 +3,7 @@ whereby they revovle around each other at different speed and angles. Each plane
 
 ## Moving Light source
 
-Notably, for the second, moving light source, I added a [brown dwrarf](https://en.wikipedia.org/wiki/Brown_dwarf), which is a kind of self-luminous object that failed to become a star. Here I simply treated it as an additional planet in the solar system that rotates around the Sun. It is not physically correct, but I made it followed the same orbit as Jupyter, and placed it directly across it, acting as Jupyter's evil twin.
+Notably, for the second, moving light source, I added a [brown dwrarf](https://en.wikipedia.org/wiki/Brown_dwarf), which is a kind of self-luminous object that failed to become a star. Here I simply treated it as an additional planet in the solar system that rotates around the Sun. It is not physically correct, but I made it followed the same orbit as Jupiter, and placed it directly across it, acting as Jupiter's evil twin.
 
 The brown dwraf emits a pink light. To make the effect more obvious, I have made the brown dwarf's and Jupiter's angular velocities 5 times greater than the rest of the planets.
 
@@ -27,7 +27,6 @@ For extension, I implemented the first category: `Additional planets with textur
 Additionally, I added a brown dwarf (a failed star) to our solar system, acting as a second light source rotating around the Sun. In reality, the physical orbits should change, but here I just treated it as an additional planet.
 
 I downloaded the [planet textures](https://www.solarsystemscope.com/textures/) from the link provided, and completed our solar systems with all 9 major planets, in the correct order. Note that the scalings are optimised for visual effects rather than pysical accuracy, which would make the smaller planets too small to be visible.
-
 
 ## Controls
 
