@@ -46,7 +46,7 @@ private:
 
 
     glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 15.0f);
-    float cameraSpeed = 1.0f;
+    float cameraSpeed = 0.8f;
     glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
     glm::mat4 view;
     float yaw = 0.0f;
